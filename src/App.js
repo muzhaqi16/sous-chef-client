@@ -1,5 +1,12 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom'
+import Header from './components/Header/Header'
+import Footer from './components/Footer/Footer'
+import LoginPage from './routes/LoginPage/LoginPage'
+import RegistrationPage from './routes/RegistrationPage/RegistrationPage'
+import NotFoundPage from './routes/NotFoundPage/NotFoundPage';
+import './App.css';
+
 
 class App extends Component {
   state = { hasError: false }
@@ -21,25 +28,24 @@ class App extends Component {
             <Route
               exact
               path={'/'}
-              component={/* */}
             />
-            <PublicOnlyRoute
+            <Route
               path={'/login'}
               component={LoginPage}
             />
-            <PublicOnlyRoute
+            <Route
               path={'/register'}
               component={RegistrationPage}
             />
-            <PrivateRoute
+            <Route
               path={'/article/:articleId'}
-              component={/* */}
             />
             <Route
               component={NotFoundPage}
             />
           </Switch>
         </main>
+        <Footer />
       </div >
     )
   }

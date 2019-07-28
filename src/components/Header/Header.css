@@ -1,0 +1,23 @@
+nav {
+  padding: 1% 5%;
+  background-color: #aaa;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+}
+#main-nav{
+    float: right;
+}
+#main-nav li{
+    display: inline-block;
+}
+a{
+    text-decoration:none;
+    margin-right:20px;
+}
+#logo{
+    float: left;
+    width:100px;
+}
