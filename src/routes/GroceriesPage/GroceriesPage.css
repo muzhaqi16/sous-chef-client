@@ -1,0 +1,7 @@
+.GroceriesPage{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: space-between;
+    height: 100%;;
+}

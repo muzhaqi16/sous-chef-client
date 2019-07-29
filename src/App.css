@@ -9,8 +9,17 @@ body {
   color: #444;
   text-align: center;
   line-height: 1.5;
+}
+.App{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   height: 100vh;
 }
-header {
-  padding-bottom: 10%;
+main { 
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  height: 100%;
+  align-content: space-around;
 }

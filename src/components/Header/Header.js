@@ -25,9 +25,9 @@ export default class Header extends Component {
     render() {
         return (
             <nav role="navigation">
-                <Link to="index.html" id="logo-link"><img src={logo} alt="sous chef logo" id="logo" /></Link>
+                <Link to="/" id="logo-link"><img src={logo} alt="sous chef logo" id="logo" /></Link>
                 <ul id="main-nav">
-                    <li><Link to="index.html">Home</Link></li>
+                    <li><Link to="/">Home</Link></li>
                     <li><Link to="">Log In</Link></li>
                     <li><Link to="">Contact</Link></li>
                 </ul>

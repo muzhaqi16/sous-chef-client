@@ -1,11 +1,7 @@
 nav {
-  padding: 1% 5%;
   background-color: #aaa;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 10;
+  padding: 2% 5%;
+  height: 100%;
 }
 #main-nav{
     float: right;
@@ -19,5 +15,5 @@ a{
 }
 #logo{
     float: left;
-    width:100px;
+    width:10vw;
 }
