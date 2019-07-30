@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom'
 import Header from './components/Header/Header'
 import LandingPage from './routes/LadingPage/LandingPage'
 import GroceriesPage from './routes/GroceriesPage/GroceriesPage'
+import AddGroceriesPage from './routes/AddGroceriesPage/AddGroceriesPage';
 import Footer from './components/Footer/Footer'
 import LoginPage from './routes/LoginPage/LoginPage'
 import RegistrationPage from './routes/RegistrationPage/RegistrationPage'
@@ -19,14 +20,14 @@ class App extends Component {
       hasError: false
     };
   }
-  addGroceries = groceries => {
+  addGroceries = groceryItem => {
     this.setState({
-      groceries: [...this.state.groceries, groceries],
+      groceries: [...this.state.groceries, groceryItem],
     })
   }
-  deleteGroceries = groceryId => {
+  deleteGroceries = groceryItemId => {
     this.setState({
-      groceries: this.state.groceries.filter(grocery => grocery.id !== groceryId)
+      groceries: this.state.groceries.filter(grocery => grocery.id !== groceryItemId)
     })
   }
   componentDidMount() {
@@ -70,6 +71,10 @@ class App extends Component {
               <Route
                 path={'/groceries/'}
                 component={GroceriesPage}
+              />
+              <Route
+                path={'/add_groceries'}
+                component={AddGroceriesPage}
               />
               <Route
                 component={NotFoundPage}
