@@ -1,0 +1,59 @@
+.add-grocery-items-section{
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  font-family: "Roboto", Helvetica, Arial, sans-serif;
+  font-weight: 100;
+  font-size: 14px;
+  line-height: 30px;
+  color: #777;
+}
+#add-groceries-form{
+  text-align: left;
+  max-width: 400px;
+  background: #F9F9F9;
+  padding: 25px;
+  margin: 0 auto;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+#add-groceries-form input{
+     width: 100%;
+  border: 1px solid #ccc;
+  background: #FFF;
+  margin: 0 0 5px;
+  padding: 10px;
+}
+#add-groceries-form button[type="submit"] {
+  cursor: pointer;
+  width: 100%;
+  border: none;
+  background: #4CAF50;
+  color: #FFF;
+  margin: 0 0 5px;
+  padding: 10px;
+  font-size: 15px;
+}
+#add-groceries-form button[type="submit"]:hover {
+  background: #43A047;
+}
+#add-groceries-from label{
+    margin: 5px 0 15px;
+  display: block;
+  font-size: 13px;
+  font-weight: 400;
+}
+fieldset {
+  border: medium none !important;
+  margin: 0 0 10px;
+  min-width: 100%;
+  padding: 0;
+  width: 100%;
+}
+#add-groceries-form input#reminder{
+    width: auto;
+    margin-left: 50%;
+}
+#add-groceries-form input#expiry-date{
+    width: 70%;
+    margin-left: 20px;
+}

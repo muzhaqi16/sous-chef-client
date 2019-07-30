@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import GroceriesContext from './../../contexts/GroceriesContext';
+import './AddGroceriesPage.css';
 
 export default class AddGroceries extends Component {
     static contextType = GroceriesContext;
@@ -18,15 +19,25 @@ export default class AddGroceries extends Component {
     }
     render() {
         return (
-            <section>
-                <h2>Add Groceries</h2>
-                <form onSubmit={this.handleSubmit}>
-                    <label htmlFor='name'>Name</label>
-                    <input type="text" id="name" required
-                        aria-label='Enter grocery item name...'
-                        name='name' />
-                    <label htmlFor='category'>Category</label>
-                    <input type="text" id="category" required name="category"></input>
+            <section className="add-grocery-items-section">
+                <form onSubmit={this.handleSubmit} method="post" id="add-groceries-form">
+                    <h2>Add Groceries</h2>
+                    <fieldset>
+                        <label htmlFor='name'>Name</label>
+                        <input type="text" id="name" required aria-label='Enter grocery item name...' name='name' tabIndex="1" autoFocus placeholder="Grocery item name" />
+                    </fieldset>
+                    <fieldset>
+                        <label htmlFor='category'>Category</label>
+                        <input type="text" id="category" required name="category"></input>
+                    </fieldset>
+                    <fieldset>
+                        <label for="reminder">Expiry date reminder</label>
+                        <input type="checkbox" id="reminder" />
+                    </fieldset>
+                    <fieldset>
+                        <label for="expiry-date">Expiry date</label>
+                        <input type="date" id="expiry-date" />
+                    </fieldset>
                     <button type='submit'>
                         Add Item
                     </button>
