@@ -7,13 +7,12 @@
 }
 .GroceryList{
     text-align: left;
+    padding: 0;
 }
 
 .GroceryList li {
     list-style: none;
-    width: 200px;
-    height: 10vh;
-    display: inline-block;
+    display:block;
     background-color:#f4f8fa;
     margin: 1%;
     padding: 10px;

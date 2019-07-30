@@ -8,12 +8,21 @@ export default class AddGroceries extends Component {
     handleSubmit = ev => {
         ev.preventDefault();
         const { location, history } = this.props
-        const destination = (location.state || {}).from || '/groceries'
-        const { name, category } = ev.target;
+        const destination = (location.state || {}).from || '/groceries/all'
+        const { name, category, storageLocation, reminder, quantity, expiration, unit, notes } = ev.target;
         const id = this.context.data.groceries[this.context.data.groceries.length - 1].id;
         const newItem = {
-            "id": parseInt(id) + 1, "name": name.value, "category": category.value
+            "id": parseInt(id) + 1,
+            "name": name.value,
+            "category": category.value,
+            "location": storageLocation.value,
+            "expires": expiration.value,
+            "reminder": reminder.value,
+            "quantity": quantity.value,
+            "unit": unit.value,
+            "notes": notes.value
         }
+        console.log(newItem);
         this.context.addGroceries(newItem);
         history.push(destination);
     }
@@ -28,15 +37,47 @@ export default class AddGroceries extends Component {
                     </fieldset>
                     <fieldset>
                         <label htmlFor='category'>Category</label>
-                        <input type="text" id="category" required name="category"></input>
+                        <select id="category" required name="category">
+                            <option value="dry">Dry Goods</option>
+                            <option value="veg">Vegetables</option>
+                            <option value="herbs">Herbs &amp; Spices</option>
+                            <option value="oils">Oils &amp; Spices</option>
+                            <option value="frozen">Frozen</option>
+                            <option value="canned">Canned Foods</option>
+                            <option value="bottles">Bottles &amp; Jars</option>
+                        </select>
                     </fieldset>
                     <fieldset>
-                        <label for="reminder">Expiry date reminder</label>
+                        <label htmlFor='location'>Storage Location</label>
+                        <select id="location" required name="storageLocation">
+                            <option value="freezer">Freezer</option>
+                            <option value="fridge">Fridge</option>
+                            <option value="pantry">Pantry</option>
+                        </select>
+                    </fieldset>
+                    <fieldset>
+                        <label htmlFor="reminder">Expiry date reminder </label>
                         <input type="checkbox" id="reminder" />
                     </fieldset>
                     <fieldset>
-                        <label for="expiry-date">Expiry date</label>
-                        <input type="date" id="expiry-date" />
+                        <label htmlFor="expiry-date">Expiry date </label>
+                        <input type="date" id="expiry-date" name="expiration" />
+                    </fieldset>
+                    <fieldset>
+                        <label htmlFor="quantity"> Quantity </label><br />
+                        <input type="number" id="quantity" defaultValue="1" max="100" min="1" name="quantity" />
+
+                        <select id="unit" name="unit">
+                            <option value="lbs">Pound(s)</option>
+                            <option value="kg">Kilogram(s)</option>
+                            <option value="piece">Piece(s)</option>
+                            <option value="bag">Bag(s)</option>
+                            <option value="pckg">Package(s)</option>
+                        </select>
+                    </fieldset>
+                    <fieldset>
+                        <label>Notes</label>
+                        <textarea name="notes"></textarea>
                     </fieldset>
                     <button type='submit'>
                         Add Item

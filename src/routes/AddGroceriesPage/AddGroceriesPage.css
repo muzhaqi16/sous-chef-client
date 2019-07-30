@@ -7,6 +7,7 @@
   font-size: 14px;
   line-height: 30px;
   color: #777;
+  padding: 1%;
 }
 #add-groceries-form{
   text-align: left;
@@ -16,12 +17,13 @@
   margin: 0 auto;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
-#add-groceries-form input{
+#add-groceries-form input,select,textarea{
      width: 100%;
   border: 1px solid #ccc;
   background: #FFF;
   margin: 0 0 5px;
   padding: 10px;
+  font-size: 14px;
 }
 #add-groceries-form button[type="submit"] {
   cursor: pointer;
@@ -37,7 +39,7 @@
   background: #43A047;
 }
 #add-groceries-from label{
-    margin: 5px 0 15px;
+  margin: 5px 0 15px;
   display: block;
   font-size: 13px;
   font-weight: 400;
@@ -51,9 +53,14 @@ fieldset {
 }
 #add-groceries-form input#reminder{
     width: auto;
-    margin-left: 50%;
 }
 #add-groceries-form input#expiry-date{
     width: 70%;
     margin-left: 20px;
+}
+#add-groceries-form #quantity,#unit{
+  width: auto;
+}
+#add-groceries-form #unit{
+  width: auto;
 }

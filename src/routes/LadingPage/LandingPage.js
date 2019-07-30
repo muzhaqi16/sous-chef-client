@@ -12,13 +12,13 @@ export default class LandingPage extends Component {
                 </header>
 
                 <section>
-                    <Link to="groceries">Your Groceries</Link>
+                    <Link to="groceries/all">Your Groceries</Link>
                 </section>
                 <section>
-                    <Link to="recipes.html">Generate Recipes</Link>
+                    <Link to="recipes">Generate Recipes</Link>
                 </section>
                 <section>
-                    <Link to="shopping_list.html">Shopping list</Link>
+                    <Link to="shopping_list">Shopping list</Link>
                 </section>
             </>
         )

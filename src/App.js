@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom'
 import Header from './components/Header/Header'
 import LandingPage from './routes/LadingPage/LandingPage'
 import GroceriesPage from './routes/GroceriesPage/GroceriesPage'
+import RecipesPage from './routes/RecipesPage/RecipesPage';
 import AddGroceriesPage from './routes/AddGroceriesPage/AddGroceriesPage';
 import Footer from './components/Footer/Footer'
 import LoginPage from './routes/LoginPage/LoginPage'
@@ -17,6 +18,7 @@ class App extends Component {
     super(props);
     this.state = {
       groceries: [],
+      shoppingList: [],
       hasError: false
     };
   }
@@ -26,6 +28,7 @@ class App extends Component {
     })
   }
   deleteGroceries = groceryItemId => {
+    console.log(groceryItemId);
     this.setState({
       groceries: this.state.groceries.filter(grocery => grocery.id !== groceryItemId)
     })
@@ -69,9 +72,11 @@ class App extends Component {
                 component={RegistrationPage}
               />
               <Route
-                path={'/groceries/'}
+                path={'/groceries/:path'}
                 component={GroceriesPage}
               />
+              <Route path={'/recipes'}
+                component={RecipesPage} />
               <Route
                 path={'/add_groceries'}
                 component={AddGroceriesPage}
