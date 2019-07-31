@@ -4,21 +4,22 @@
 
 body {
   font-family: "Open Sans",
-  sans-serif; 
+    sans-serif;
   font-size: 20px;
   color: #444;
   text-align: center;
   line-height: 1.5;
 }
-.App{
+
+.App {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   height: 100vh;
 }
-main { 
+
+main {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  height: 100%;
 }

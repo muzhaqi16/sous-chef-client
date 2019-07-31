@@ -5,17 +5,20 @@
     justify-content: space-between;
     height: 100%;
 }
-.GroceryList{
+
+.GroceryList {
     text-align: left;
     padding: 0;
 }
 
 .GroceryList li {
     list-style: none;
-    display:block;
-    background-color:#f4f8fa;
+    display: inline-block;
+    background-color: #f4f8fa;
     margin: 1%;
     padding: 10px;
+    height: 135px;
+    overflow: hidden;
 }
 
 .GroceryList li:nth-child(even) {
