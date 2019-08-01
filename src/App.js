@@ -48,6 +48,11 @@ class App extends Component {
       shoppingList: [...this.state.shoppingList, item],
     })
   }
+  removeShoppingListItem = item => {
+    this.setState({
+      shoppingList: this.state.shoppingList.filter(listItem => listItem.name !== item),
+    })
+  }
   deleteGroceries = groceryItemId => {
     this.setState({
       groceries: this.state.groceries.filter(grocery => grocery.id !== groceryItemId)
@@ -67,7 +72,8 @@ class App extends Component {
       data: this.state,
       addGroceries: this.addGroceries,
       deleteGroceries: this.deleteGroceries,
-      addShoppingListItem: this.addShoppingListItem
+      addShoppingListItem: this.addShoppingListItem,
+      removeShoppingListItem: this.removeShoppingListItem,
     }
     return (
       <div className='App'>

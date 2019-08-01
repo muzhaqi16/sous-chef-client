@@ -4,7 +4,8 @@ const GroceriesContext = React.createContext({
     data: {},
     addGroceries: () => { },
     deleteGroceries: () => { },
-    addShoppingListItem: () => { }
+    addShoppingListItem: () => { },
+    removeShoppingListItem: () => { }
 })
 
 export default GroceriesContext
