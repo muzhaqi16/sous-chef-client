@@ -1,0 +1,63 @@
+.shoppingListPage{
+    width: 100%;
+}
+.shoppingList{
+    width: 50%;
+    margin: 0 auto;
+    padding: 0;
+    text-align: center;
+    min-width: 400px;
+    }
+.shoppingList ul{
+    margin: 0;
+    padding: 0;
+}
+.shopping-item{
+    width: 100%;
+    list-style: none;
+    font-size: 1.25em;
+    line-height: 0;
+    text-align: left;
+    position: relative;
+}
+.status,.item-name{
+    display: inline-block;
+}
+.item-name h3,p{
+    display: inline-block;
+}
+.shoppingList input{
+    width: 65%;
+    max-width: 400px;
+    font-size: 1.25em;
+    margin: 0 10px 5px;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    color: #616161;
+    opacity: 0.8;
+    transition: opacity 400ms;
+}
+.status input{
+    width:auto;
+}
+.shoppingList button{
+    font-size: 1.25em;
+    margin: 0 0 5px;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #74ce3b;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.remove{
+    color: red;
+    position: absolute;
+    right: 10px;
+    top:10px;
+}
+.remove:hover{
+    font-size: 1.5em;
+}

@@ -12,13 +12,29 @@ import NotFoundPage from './routes/NotFoundPage/NotFoundPage';
 import GroceriesContext from './contexts/GroceriesContext';
 import './App.css';
 import groceriesData from './groceriesData'
+import ShoppingListPage from './routes/ShoppingListPage/ShoppingListPage';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       groceries: [],
-      shoppingList: [],
+      shoppingList: [{
+        "id": "1",
+        "name": "Apples",
+        "quantity": 2,
+        "unit": "pounds"
+      }, {
+        "id": "2",
+        "name": "Oranges",
+        "image": "orange"
+      },
+      {
+        "id": "3",
+        "name": "Ice Cream",
+        "quantity": 1,
+        "unit": "container"
+      },],
       hasError: false
     };
   }
@@ -27,8 +43,12 @@ class App extends Component {
       groceries: [...this.state.groceries, groceryItem],
     })
   }
+  addShoppingListItem = item => {
+    this.setState({
+      shoppingList: [...this.state.shoppingList, item],
+    })
+  }
   deleteGroceries = groceryItemId => {
-    console.log(groceryItemId);
     this.setState({
       groceries: this.state.groceries.filter(grocery => grocery.id !== groceryItemId)
     })
@@ -46,7 +66,8 @@ class App extends Component {
     const contextValue = {
       data: this.state,
       addGroceries: this.addGroceries,
-      deleteGroceries: this.deleteGroceries
+      deleteGroceries: this.deleteGroceries,
+      addShoppingListItem: this.addShoppingListItem
     }
     return (
       <div className='App'>
@@ -81,6 +102,8 @@ class App extends Component {
                 path={'/add_groceries'}
                 component={AddGroceriesPage}
               />
+              <Route path={'/shopping_list'}
+                component={ShoppingListPage} />
               <Route
                 component={NotFoundPage}
               />

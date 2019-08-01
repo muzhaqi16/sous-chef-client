@@ -11,6 +11,10 @@ export default class GroceriesListPage extends Component {
         const id = this.props.groceryItem.id;
         this.context.deleteGroceries(id);
     }
+    handleAdd = ev => {
+        const id = this.props.groceryItem.id;
+        this.context.addShoppingListItem(this.context.data.groceries[id - 1]);
+    }
     render() {
         return (
             <li className="grocery-item">
@@ -23,7 +27,7 @@ export default class GroceriesListPage extends Component {
                 <label className="expiration">Expires in {this.props.groceryItem.expires}</label>
 
                 <FontAwesomeIcon className="delete" icon={faMinus} onClick={this.handleDelete} title="Delete this item from your list" />
-                <label className="add" title="Add to shopping list" ><FontAwesomeIcon icon={faPlus} onClick={this.handleAdd} /> Add to List</label>
+                <label className="add" title="Add to shopping list" onClick={this.handleAdd} ><FontAwesomeIcon icon={faPlus} /> Add to List</label>
             </li>
         )
     }
