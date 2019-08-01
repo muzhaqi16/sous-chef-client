@@ -25,6 +25,12 @@
 .GroceryList li:nth-child(even) {
     background-color: #ddd;
 }
+.options a{
+    text-decoration: none;
+    font-size: 1.25em;
+    color: black;
+    padding: 1%;
+}
 @media all and (max-width: 480px) {
     .GroceryList ul{
         padding: 0;
