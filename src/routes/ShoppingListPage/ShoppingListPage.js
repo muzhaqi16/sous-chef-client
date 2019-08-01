@@ -22,11 +22,11 @@ export default class ShoppingListPage extends Component {
         const itemsList = shoppingList.map(items => {
             return <li className="shopping-item" key={items.id}>
                 <div className="status">
-                    <input type="checkbox" className="unchecked" /> <input type="checkbox" className="checked" />
+                    <input type="checkbox" className="unchecked" />
                 </div>
 
                 <div className="item-name">
-                    <h3>{items.name} </h3>
+                    <h3>{items.name} &nbsp;</h3>
                     <p> {items.quantity} {items.unit} </p>
                 </div>
                 <FontAwesomeIcon className="remove" icon={faTrash} onClick={this.handleDelete} title="Delete this item from your list" />
@@ -39,7 +39,7 @@ export default class ShoppingListPage extends Component {
 
                 <section className="shoppingList">
                     <form onSubmit={this.handleAddItem}>
-                        <input type="text" placeholder="To buy" name="name" /><button type="submit">Add <FontAwesomeIcon icon={faCartPlus} /></button>
+                        <input type="text" placeholder="To buy" name="name" /><button type="submit"><span>Add </span><FontAwesomeIcon icon={faCartPlus} /></button>
                     </form>
 
                     <ul>

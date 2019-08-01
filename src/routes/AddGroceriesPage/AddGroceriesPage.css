@@ -8,6 +8,7 @@
   line-height: 30px;
   color: #777;
   padding: 1%;
+  border-radius: 0;
 }
 #add-groceries-form{
   text-align: left;

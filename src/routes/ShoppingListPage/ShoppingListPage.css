@@ -2,11 +2,12 @@
     width: 100%;
 }
 .shoppingList{
-    width: 50%;
+    width: 100%;
     margin: 0 auto;
-    padding: 0;
+    padding: 10px ;
     text-align: center;
-    min-width: 400px;
+    max-width: 600px;
+    border-radius: 0;
     }
 .shoppingList ul{
     margin: 0;
@@ -27,8 +28,7 @@
     display: inline-block;
 }
 .shoppingList input{
-    width: 65%;
-    max-width: 400px;
+    width: 75%;
     font-size: 1.25em;
     margin: 0 10px 5px;
     padding: 10px;
@@ -60,4 +60,20 @@
 }
 .remove:hover{
     font-size: 1.5em;
+}
+@media all and (max-width: 480px) {
+.shoppingList{
+        padding-left:0;
+}
+.shoppingList ul{
+    width: 90%;
+    margin:0 auto;
+}
+.shoppingList input{
+    width: 75%;
+    margin-left:0;
+    }
+ .shoppingList span{
+     display: none;
+}
 }

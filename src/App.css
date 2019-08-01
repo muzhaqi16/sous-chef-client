@@ -3,23 +3,28 @@
 }
 
 body {
-  font-family: "Open Sans",
-    sans-serif;
+  font-family: "Open Sans",sans-serif;
   font-size: 20px;
   color: #444;
   text-align: center;
   line-height: 1.5;
+  background-color: #a6d9f7;
 }
 
 .App {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   height: 100vh;
 }
 
 main {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   flex-wrap: wrap;
+}
+@media all and (max-width: 480px) {
+  main{
+    flex-direction: column;
+  }
 }

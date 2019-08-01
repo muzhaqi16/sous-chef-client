@@ -1,6 +1,7 @@
 .grocery-item {
     position: relative;
-    width: 400px;
+    width: 100%;
+    max-width: 400px;
 }
 
 img {

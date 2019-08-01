@@ -1,19 +1,35 @@
 nav {
-  background-color: #aaa;
   padding: 2% 5%;
   height: 100%;
+  background-color: #239BD3;
+}
+#logo{
+    padding-bottom:10px;
 }
 #main-nav{
     float: right;
 }
 #main-nav li{
     display: inline-block;
+    
 }
-a{
+#main-nav a{
     text-decoration:none;
     margin-right:20px;
+    color:white;
+    font-size: 1.25em;
+    font-weight: bold;
 }
+#main-nav a:hover{
+    color: #f95738;
+}
+
 #logo{
     float: left;
     width:15vh;
+}
+@media all and (max-width: 480px) {
+  #main-nav li{
+      display: block;
+  }
 }

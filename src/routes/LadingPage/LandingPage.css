@@ -1,12 +1,31 @@
-header{
-    width: 100vw;
+.hero{
+color: #312f2f;
+ width: 90vw;
+ font-size: 2em;
+ text-align: left;
+ padding:0 20%; 
 }
 section {
   min-height: 200px;
   padding: 6% 0;
-  background-color: #bbb;
   flex-grow: 1;
+  background-color: #239BD3;
+  width: 90%;
+  margin:0 auto;
+  border-radius: 3%;
+  margin-bottom:1%;
 }
-section:nth-child(even) {
-  background-color: #ddd;
+section a{
+  text-decoration: none;
+  font-size: 1.25em;
+  color: white;
+}
+.stand-out{
+  color: #f08a4b;
+}
+@media all and (max-width: 480px) {
+  .hero{
+      padding:0 5%; 
+      font-size: 1.5em;
+  }
 }
