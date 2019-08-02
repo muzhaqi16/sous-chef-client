@@ -1,0 +1,15 @@
+{
+    "version": 2,
+    "alias": "muzhaqi16-sous-chef",
+    "name": "sous-chef",
+    "routes": [
+        {
+            "src": "^/static/(.*)",
+            "dest": "/static/$1"
+        },
+        {
+            "src": ".*",
+            "dest": "/index.html"
+        }
+    ]
+}
