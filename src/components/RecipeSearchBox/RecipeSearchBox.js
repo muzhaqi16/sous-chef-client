@@ -140,6 +140,7 @@ export default class RecipeSearchBox extends Component {
 
         return (
             <Fragment>
+                <h1>Which ingredients do you want to use today</h1>
                 <input
                     type="text"
                     onChange={onChange}
