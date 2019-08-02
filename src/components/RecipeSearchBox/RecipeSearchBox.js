@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
+import config from './../../config';
 import './RecipeSearchBox.css';
 
 export default class RecipeSearchBox extends Component {
@@ -86,7 +87,7 @@ export default class RecipeSearchBox extends Component {
     };
     getRecipes = () => {
         const url = 'https://api.spoonacular.com/recipes/findByIngredients?ingredients=';
-        const apiKey = "405190d9b2554465948e538161346bba";
+        const apiKey = config.API_KEY;
         const ingredients = this.state.recipeItems.join();
         console.log(`${url}${ingredients}&apiKey=${apiKey}`);
         fetch(`${url}${ingredients}&apiKey=${apiKey}`)
