@@ -2,6 +2,11 @@
     "version": 2,
     "alias": "muzhaqi16-sous-chef",
     "name": "sous-chef",
+    "build": {
+        "env": {
+            "RECIPE_API_KEY": "405190d9b2554465948e538161346bba"
+        }
+    },
     "routes": [
         {
             "src": "^/static/(.*)",
