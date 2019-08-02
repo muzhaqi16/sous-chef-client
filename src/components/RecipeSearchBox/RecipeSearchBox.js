@@ -87,7 +87,7 @@ export default class RecipeSearchBox extends Component {
     };
     getRecipes = () => {
         const url = 'https://api.spoonacular.com/recipes/findByIngredients?ingredients=';
-        const apiKey = config.RECIPE_API_KEY;
+        const apiKey = '405190d9b2554465948e538161346bba';
         const ingredients = this.state.recipeItems.join();
         console.log(`${url}${ingredients}&apiKey=${apiKey}`);
         fetch(`${url}${ingredients}&apiKey=${apiKey}`)
