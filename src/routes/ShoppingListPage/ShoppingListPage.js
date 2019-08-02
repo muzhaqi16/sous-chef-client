@@ -42,7 +42,7 @@ export default class ShoppingListPage extends Component {
 
                 <section className="shoppingList">
                     <form onSubmit={this.handleAddItem}>
-                        <input type="text" placeholder="To buy" name="name" /><button type="submit"><span>Add </span><FontAwesomeIcon icon={faCartPlus} /></button>
+                        <input type="text" placeholder="To buy" name="name" required /><button type="submit"><span>Add </span><FontAwesomeIcon icon={faCartPlus} /></button>
                     </form>
 
                     <ul>

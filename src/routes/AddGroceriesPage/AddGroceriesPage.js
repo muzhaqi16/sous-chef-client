@@ -22,7 +22,6 @@ export default class AddGroceries extends Component {
             "unit": unit.value,
             "notes": notes.value
         }
-        console.log(newItem);
         this.context.addGroceries(newItem);
         history.push(destination);
     }
