@@ -83,7 +83,7 @@ export default class RecipeSearchBox extends Component {
     };
     getRecipes = () => {
         const url = 'https://api.spoonacular.com/recipes/findByIngredients?ingredients=';
-        const apiKey = '405190d9b2554465948e538161346bba';
+        const apiKey = '6c127984799b490cbd26a4a7014b83de ';
         const ingredients = this.state.recipeItems.join();
         fetch(`${url}${ingredients}&apiKey=${apiKey}`)
             .then(response => response.json())
@@ -91,6 +91,25 @@ export default class RecipeSearchBox extends Component {
             .catch(error => {
                 console.error(error.message + '. Could not get recipes')
             })
+    }
+    getRecipeInformation = (id) => {
+        const url = `https://api.spoonacular.com/recipes/${id}/information`;
+        const apiKey = '6c127984799b490cbd26a4a7014b83de ';
+        fetch(`${url}?apiKey=${apiKey}`)
+            .then(response => response.json())
+            .then(data => this.handleInformation(data))
+            .catch(error => {
+                console.error(error.message + '. Could not get recipes')
+            })
+    }
+    handleInformation = (data) => {
+        const cookingMinutes = data.cookingMinutes;
+        const preparationMinutes = data.preparationMinutes;
+        const readyInMinutes = data.readyInMinutes;
+        const servings = data.servings;
+        const id = data.id;
+        const info = { cookingMinutes, preparationMinutes, readyInMinutes, servings }
+        console.log(info);
     }
     handleRecipes = (data) => {
         const newRecipes = data.map(item => {
@@ -119,7 +138,17 @@ export default class RecipeSearchBox extends Component {
             return <li key={item}>{item}</li>
         })
         const recipesList = recipes.map(recipe => {
-            return <li key={recipe.id}><img src={recipe.image} alt={recipe.title} />{recipe.title} {recipe.missingIngredients}</li>
+            return <li key={recipe.id}>
+                <div className="header">
+                    <img src={recipe.image} alt={recipe.title} />
+                    <h1>{recipe.title}</h1>
+                </div>
+                <span className="servings"></span>
+                <span className="prep-time"></span>
+                <span className="cooking-time"></span>
+                <span className="ready-in-time"></span>
+                <p>{recipe.missingIngredients}</p>
+            </li>
         })
         let suggestionsListComponent;
 
@@ -166,8 +195,16 @@ export default class RecipeSearchBox extends Component {
                     </ul>
                 </div>
                 <ul className="recipes-list">
-                    <li><img src={require('./../../img/undefined.png')} />Vitamin C Booster Smothie Missing : Carrots</li>
-                    <li><img src={require('./../../img/undefined.png')} />Wake Up Call: Sweet Beet Juice Missing: Beets</li>
+                    {recipesList}
+                    <li>
+                        <div className="header">
+                            <img src={require('./../../img/undefined.png')} alt="vitamin" />
+                            <h1>Vitamin C Booster Smothie</h1>
+                        </div>
+                        <p>Pre time : 5 minutes</p>
+                        <p> Missing :  Carrots</p>
+                    </li>
+                    <li><img src={require('./../../img/undefined.png')} alt="beet juice" />Wake Up Call: Sweet Beet Juice Missing: Beets</li>
                 </ul>
                 <button onClick={getRecipes}>Get Recipes</button>
             </Fragment>

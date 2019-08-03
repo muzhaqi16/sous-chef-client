@@ -85,6 +85,9 @@ a {
 }
 
 @media all and (min-width: 1200px) {
+   .hero div {
+    font-size: 1.5em;
+  }
   #mockup {
     height: 35vw;
   }
