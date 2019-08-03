@@ -109,10 +109,12 @@ export default class RecipeSearchBox extends Component {
         const servings = data.servings;
         const id = data.id;
         const info = { cookingMinutes, preparationMinutes, readyInMinutes, servings, id }
+        console.log(info);
         return info;
     }
     handleRecipes = (data) => {
         const newRecipes = data.map(item => {
+            this.getRecipeInformation(item.id)
             const id = item.id;
             const likes = item.likes;
             const title = item.title;
