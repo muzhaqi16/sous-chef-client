@@ -2,7 +2,7 @@
     border-radius: 0;
     width: 100%;
     background-color: #a6d9f7;
-    padding: 0;
+    padding: 1%;
 }
 .recipes-list{
     display: flex;
@@ -10,13 +10,17 @@
     width: 100%;
     flex: 1;
     flex-wrap: wrap;
+    padding:0;
+    text-align: left;
 }
 .recipes-list li{
     list-style: none;
     display: block;
     padding: 10px;
-    margin:1%;
-    background-color: blueviolet;
+    margin:1% auto;
+    background-color: white;
+    overflow: hidden;
+  max-width: calc(400px + 1rem);
 }
 .recipes-list .header{
     display: flex;

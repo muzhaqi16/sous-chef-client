@@ -92,10 +92,10 @@ export default class RecipeSearchBox extends Component {
                 console.error(error.message + '. Could not get recipes')
             })
     }
-    getRecipeInformation = (id) => {
+    async getRecipeInformation(id) {
         const url = `https://api.spoonacular.com/recipes/${id}/information`;
         const apiKey = '6c127984799b490cbd26a4a7014b83de ';
-        fetch(`${url}?apiKey=${apiKey}`)
+        await fetch(`${url}?apiKey=${apiKey}`)
             .then(response => response.json())
             .then(data => this.handleInformation(data))
             .catch(error => {
@@ -108,8 +108,8 @@ export default class RecipeSearchBox extends Component {
         const readyInMinutes = data.readyInMinutes;
         const servings = data.servings;
         const id = data.id;
-        const info = { cookingMinutes, preparationMinutes, readyInMinutes, servings }
-        console.log(info);
+        const info = { cookingMinutes, preparationMinutes, readyInMinutes, servings, id }
+        return info;
     }
     handleRecipes = (data) => {
         const newRecipes = data.map(item => {
@@ -189,6 +189,8 @@ export default class RecipeSearchBox extends Component {
                     value={userInput} placeholder="Start typing..."
                 />
                 {suggestionsListComponent}
+                <button id="get-recipes" onClick={getRecipes}>Get Recipes</button>
+
                 <div className="selected-ingredients">
                     <ul>
                         {recipeList}
@@ -206,7 +208,7 @@ export default class RecipeSearchBox extends Component {
                     </li>
                     <li><img src={require('./../../img/undefined.png')} alt="beet juice" />Wake Up Call: Sweet Beet Juice Missing: Beets</li>
                 </ul>
-                <button onClick={getRecipes}>Get Recipes</button>
+
             </Fragment>
         );
     }

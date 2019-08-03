@@ -2,7 +2,9 @@ input,button {
   font-size:1.25em;
   border: 1px solid #999;
   padding: 0.5rem;
-  width: calc(400px + 1rem);
+  margin:1%;
+  width: 100%;
+  max-width: calc(400px + 1rem);
 }
 
 .no-suggestions {
@@ -40,4 +42,7 @@ input,button {
     list-style: none;
     display: inline-block;
     padding: 5px;
+}
+#get-recipes{
+  
 }
