@@ -21,9 +21,9 @@ export default class GroceriesPage extends Component {
         )
         return (
             <div className="GroceriesPage">
-                <h1>View items from your freezer fridge or pantry</h1>
                 <div className="options">
                     <Link to="/add_groceries">Add items <FontAwesomeIcon icon={faPlus} /></Link>
+                    <Link to="all">All</Link>
                     <Link to="freezer">Freezer</Link>
                     <Link to="fridge">Fridge</Link>
                     <Link to="pantry">Pantry</Link>

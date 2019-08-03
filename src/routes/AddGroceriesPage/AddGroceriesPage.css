@@ -9,6 +9,7 @@
   color: #777;
   padding: 1%;
   border-radius: 0;
+  background-color: #a6d9f7;
 }
 #add-groceries-form{
   text-align: left;
@@ -56,12 +57,14 @@ fieldset {
     width: auto;
 }
 #add-groceries-form input#expiry-date{
-    width: 70%;
-    margin-left: 20px;
+    width: 100%;
+}
+#add-groceries-form #quantity{
+  margin-right:1%;
 }
 #add-groceries-form #quantity,#unit{
-  width: auto;
+  width: 49%;
 }
-#add-groceries-form #unit{
-  width: auto;
+@media all and (min-width: 480px) {
+  
 }
