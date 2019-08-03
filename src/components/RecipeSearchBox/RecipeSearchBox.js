@@ -14,16 +14,13 @@ export default class RecipeSearchBox extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            // The active selection's index
             activeSuggestion: 0,
-            // The suggestions that match the user's input
             filteredSuggestions: [],
-            // Whether or not the suggestion list is shown
             showSuggestions: false,
-            // What the user has entered
             userInput: "",
 
-            recipeItems: []
+            recipeItems: [],
+            recipes: []
         };
     }
 
@@ -88,13 +85,24 @@ export default class RecipeSearchBox extends Component {
         const url = 'https://api.spoonacular.com/recipes/findByIngredients?ingredients=';
         const apiKey = '405190d9b2554465948e538161346bba';
         const ingredients = this.state.recipeItems.join();
-        console.log(`${url}${ingredients}&apiKey=${apiKey}`);
         fetch(`${url}${ingredients}&apiKey=${apiKey}`)
             .then(response => response.json())
-            .then(data => console.log(data))
+            .then(data => this.handleRecipes(data))
             .catch(error => {
                 console.error(error.message + '. Could not get recipes')
             })
+    }
+    handleRecipes = (data) => {
+        const newRecipes = data.map(item => {
+            const id = item.id;
+            const likes = item.likes;
+            const name = item.title;
+            const image = item.image;
+            const missingIngredients = item.missedIngredients.map(ingredient => ingredient.name)
+            const newRecipe = { name, image, missingIngredients, id, likes };
+            return newRecipe;
+        })
+        this.setState({ recipes: newRecipes });
     }
     render() {
         const { onChange, onClick, onKeyDown, getRecipes,
@@ -103,11 +111,15 @@ export default class RecipeSearchBox extends Component {
                 filteredSuggestions,
                 showSuggestions,
                 userInput,
-                recipeItems
+                recipeItems,
+                recipes
             }
         } = this;
         const recipeList = recipeItems.map(item => {
             return <li key={item}>{item}</li>
+        })
+        const recipesList = recipes.map(recipe => {
+            return <li key={recipe.id}><img src={recipe.image} alt={recipe.name} />{recipe.missingIngredients}</li>
         })
         let suggestionsListComponent;
 
@@ -145,7 +157,7 @@ export default class RecipeSearchBox extends Component {
                     type="text"
                     onChange={onChange}
                     onKeyDown={onKeyDown}
-                    value={userInput}
+                    value={userInput} placeholder="Start typing..."
                 />
                 {suggestionsListComponent}
                 <div className="selected-ingredients">
@@ -153,6 +165,9 @@ export default class RecipeSearchBox extends Component {
                         {recipeList}
                     </ul>
                 </div>
+                <ul>
+                    {recipesList}
+                </ul>
                 <button onClick={getRecipes}>Get Recipes</button>
             </Fragment>
         );
