@@ -119,7 +119,7 @@ export default class RecipeSearchBox extends Component {
             return <li key={item}>{item}</li>
         })
         const recipesList = recipes.map(recipe => {
-            return <li key={recipe.id}><img src={recipe.image} alt={recipe.title} />{recipe.missingIngredients}</li>
+            return <li key={recipe.id}><img src={recipe.image} alt={recipe.title} />{recipe.title} {recipe.missingIngredients}</li>
         })
         let suggestionsListComponent;
 
@@ -166,7 +166,8 @@ export default class RecipeSearchBox extends Component {
                     </ul>
                 </div>
                 <ul className="recipes-list">
-                    {recipesList}
+                    <li><img src={require('./../../img/undefined.png')} />Vitamin C Booster Smothie Missing : Carrots</li>
+                    <li><img src={require('./../../img/undefined.png')} />Wake Up Call: Sweet Beet Juice Missing: Beets</li>
                 </ul>
                 <button onClick={getRecipes}>Get Recipes</button>
             </Fragment>
