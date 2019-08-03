@@ -27,7 +27,7 @@ export default class Header extends Component {
             <nav role="navigation">
                 <Link to="/" id="logo-link"><img src={logo} alt="sous chef logo" id="logo" /></Link>
                 <div class="menu">
-                    <a id="nav-toggle" href="#">&#9776;</a>
+                    <button id="nav-toggle">&#9776;</button>
                     <ul id="main-nav">
                         <li><Link to="/">Home</Link></li>
                         <li><Link to="">Log In</Link></li>

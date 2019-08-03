@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
-import config from './../../config';
 import './RecipeSearchBox.css';
 
 export default class RecipeSearchBox extends Component {
