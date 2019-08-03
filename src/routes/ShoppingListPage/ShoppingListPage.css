@@ -1,19 +1,24 @@
-.shoppingListPage{
+.shoppingListPage {
     width: 100%;
 }
-.shoppingList{
+
+.shoppingList {
     width: 100%;
     margin: 0 auto;
-    padding: 10px ;
+    padding: 10px;
+    padding-left: 0;
     text-align: center;
     max-width: 600px;
     border-radius: 0;
-    }
-.shoppingList ul{
-    margin: 0;
-    padding: 0;
 }
-.shopping-item{
+
+.shoppingList ul {
+    padding: 0;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.shopping-item {
     width: 100%;
     list-style: none;
     font-size: 1.25em;
@@ -21,13 +26,18 @@
     text-align: left;
     position: relative;
 }
-.status,.item-name{
+
+.status,
+.item-name {
     display: inline-block;
 }
-.item-name h3,p{
+
+.item-name h3,
+p {
     display: inline-block;
 }
-.shoppingList input{
+
+.shoppingList input {
     width: 75%;
     font-size: 1.25em;
     margin: 0 10px 5px;
@@ -37,12 +47,16 @@
     color: #616161;
     opacity: 0.8;
     transition: opacity 400ms;
+    margin-left: 0;
 }
-.status input{
-    width:auto;
+
+.status input {
+    width: auto;
 }
-.shoppingList button{
+
+.shoppingList button {
     font-size: 1.25em;
+    width: 20%;
     margin: 0 0 5px;
     padding: 10px;
     border-radius: 5px;
@@ -52,28 +66,32 @@
     text-transform: uppercase;
     font-weight: bold;
 }
-.remove{
+
+.shoppingList span {
+    display: none;
+}
+
+.remove {
     color: red;
     position: absolute;
     right: 10px;
-    top:10px;
+    top: 10px;
 }
-.remove:hover{
+
+.remove:hover {
     font-size: 1.5em;
 }
-@media all and (max-width: 480px) {
-.shoppingList{
-        padding-left:0;
-}
-.shoppingList ul{
-    width: 90%;
-    margin:0 auto;
-}
-.shoppingList input{
-    width: 75%;
-    margin-left:0;
+
+@media all and (min-width: 480px) {
+    .shoppingList input {
+        width: 70%;
     }
- .shoppingList span{
-     display: none;
-}
+
+    .shoppingList button {
+        width: 25%;
+    }
+
+    .shoppingList span {
+        display: inline;
+    }
 }

@@ -11,7 +11,7 @@ export default class LandingPage extends Component {
                     <div>
                         <h1>Welcome to <br /> Sous Chef</h1>
                         <p>The only kitchen assistant that helps you <br /> <span className="stand-out">save food </span> and <span className="stand-out">stay healthy</span></p>
-                        <button>Try it now !</button>
+                        <Link to="groceries/all"><button>Try it now !</button></Link>
                     </div>
                     <img id="mockup" src={phone} alt="app iphone mockup" />
                 </header>
