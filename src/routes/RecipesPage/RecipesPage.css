@@ -14,13 +14,14 @@
     text-align: left;
 }
 .recipes-list li{
+    width: 100%;
     list-style: none;
     display: block;
     padding: 10px;
     margin:1% auto;
     background-color: white;
     overflow: hidden;
-  max-width: calc(400px + 1rem);
+   max-width: calc(400px + 1rem);
 }
 .recipes-list .header{
     display: flex;

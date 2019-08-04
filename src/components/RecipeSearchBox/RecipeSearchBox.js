@@ -83,7 +83,7 @@ export default class RecipeSearchBox extends Component {
     };
     getRecipes = () => {
         const url = 'https://api.spoonacular.com/recipes/findByIngredients?ingredients=';
-        const apiKey = '6c127984799b490cbd26a4a7014b83de ';
+        const apiKey = '405190d9b2554465948e538161346bba';
         const ingredients = this.state.recipeItems.join();
         fetch(`${url}${ingredients}&apiKey=${apiKey}`)
             .then(response => response.json())
@@ -92,10 +92,10 @@ export default class RecipeSearchBox extends Component {
                 console.error(error.message + '. Could not get recipes')
             })
     }
-    async getRecipeInformation(id) {
+    getRecipeInformation(id) {
         const url = `https://api.spoonacular.com/recipes/${id}/information`;
-        const apiKey = '6c127984799b490cbd26a4a7014b83de ';
-        await fetch(`${url}?apiKey=${apiKey}`)
+        const apiKey = '405190d9b2554465948e538161346bba';
+        fetch(`${url}?apiKey=${apiKey}`)
             .then(response => response.json())
             .then(data => this.handleInformation(data))
             .catch(error => {
@@ -108,13 +108,11 @@ export default class RecipeSearchBox extends Component {
         const readyInMinutes = data.readyInMinutes;
         const servings = data.servings;
         const id = data.id;
-        const info = { cookingMinutes, preparationMinutes, readyInMinutes, servings, id }
-        console.log(info);
+        const info = { cookingMinutes, preparationMinutes, readyInMinutes, servings, id };
         return info;
     }
     handleRecipes = (data) => {
         const newRecipes = data.map(item => {
-            this.getRecipeInformation(item.id)
             const id = item.id;
             const likes = item.likes;
             const title = item.title;
@@ -124,6 +122,7 @@ export default class RecipeSearchBox extends Component {
             return newRecipe;
         })
         this.setState({ recipes: newRecipes });
+        return newRecipes;
     }
     render() {
         const { onChange, onClick, onKeyDown, getRecipes,
@@ -145,11 +144,11 @@ export default class RecipeSearchBox extends Component {
                     <img src={recipe.image} alt={recipe.title} />
                     <h1>{recipe.title}</h1>
                 </div>
-                <span className="servings"></span>
-                <span className="prep-time"></span>
-                <span className="cooking-time"></span>
-                <span className="ready-in-time"></span>
-                <p>{recipe.missingIngredients}</p>
+                <span className="servings">Servings : 2 </span>
+                <span className="prep-time">Pre Time : 5 minutes </span>
+                <span className="cooking-time">Cooking Time : 10 minutes </span>
+                <span className="ready-in-time">Ready in 15 minutes </span>
+                <p>Missing ingredients - {recipe.missingIngredients.length == 0 ? 'none' : recipe.missingIngredients}</p>
             </li>
         })
         let suggestionsListComponent;
@@ -184,14 +183,20 @@ export default class RecipeSearchBox extends Component {
         return (
             <Fragment>
                 <h1>Which ingredients do you want to use today</h1>
-                <input
-                    type="text"
-                    onChange={onChange}
-                    onKeyDown={onKeyDown}
-                    value={userInput} placeholder="Start typing..."
-                />
-                {suggestionsListComponent}
-                <button id="get-recipes" onClick={getRecipes}>Get Recipes</button>
+                <div className="search-area">
+                    <div className="search-box">
+                        <input
+                            type="text"
+                            onChange={onChange}
+                            onKeyDown={onKeyDown}
+                            value={userInput} placeholder="Start typing..."
+                        />
+                        {suggestionsListComponent}
+                    </div>
+                    <button id="get-recipes" onClick={getRecipes}>Get Recipes</button>
+                </div>
+
+
 
                 <div className="selected-ingredients">
                     <ul>
