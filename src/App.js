@@ -46,6 +46,11 @@ class App extends Component {
       groceries: [...this.state.groceries, groceryItem],
     })
   }
+  deleteGrocery = groceryItemId => {
+    this.setState({
+      groceries: this.state.groceries.filter(grocery => grocery.id !== groceryItemId)
+    })
+  }
   addShoppingListItem = item => {
     this.setState({
       shoppingList: [...this.state.shoppingList, item],
@@ -54,11 +59,6 @@ class App extends Component {
   removeShoppingListItem = item => {
     this.setState({
       shoppingList: this.state.shoppingList.filter(listItem => listItem.name !== item),
-    })
-  }
-  deleteGroceries = groceryItemId => {
-    this.setState({
-      groceries: this.state.groceries.filter(grocery => grocery.id !== groceryItemId)
     })
   }
   componentDidMount() {
@@ -91,7 +91,7 @@ class App extends Component {
     const contextValue = {
       data: this.state,
       addGrocery: this.addGrocery,
-      deleteGroceries: this.deleteGroceries,
+      deleteGrocery: this.deleteGrocery,
       addShoppingListItem: this.addShoppingListItem,
       removeShoppingListItem: this.removeShoppingListItem,
     }

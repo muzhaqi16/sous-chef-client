@@ -23,8 +23,7 @@ export default class AddGroceries extends Component {
         const destination = (location.state || {}).from || '/groceries/all'
 
 
-        const { name, category, storageLocation, expiration, reminder, quantity, unit, notes } = ev.target;
-        console.log(expiration.value);
+        const { name, category, storageLocation, reminder, quantity, unit, notes } = ev.target;
         const newGroceryItem = {
             "name": name.value,
             "category": category.value,

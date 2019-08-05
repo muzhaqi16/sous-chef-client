@@ -1,17 +1,35 @@
 import React, { Component } from 'react'
-import GroceriesContext from './../../contexts/GroceriesContext';
+import GroceriesContext from '../../contexts/GroceriesContext';
 import { faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import './GroceriesListPage.css';
+import config from '../../config';
+import './GroceriesItem.css';
 
 export default class GroceriesListPage extends Component {
     static contextType = GroceriesContext;
 
     handleDelete = ev => {
         const id = this.props.groceryItem.id;
-        this.context.deleteGroceries(id);
+        fetch(config.API_ENDPOINT + `/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'content-type': 'application/json',
+                'authorization': `bearer ${config.API_KEY}`
+            }
+        })
+            .then(res => {
+                if (!res.ok) {
+                    return res.json().then(error => Promise.reject(error))
+                }
+                this.context.deleteGrocery(id);
+            })
+            .catch(error => {
+                console.error(error)
+            })
+
+
     }
-    handleAdd = ev => {
+    handleAddToShoppingList = ev => {
         const id = this.props.groceryItem.id;
         this.context.addShoppingListItem(this.context.data.groceries[id - 1]);
     }
@@ -27,7 +45,7 @@ export default class GroceriesListPage extends Component {
                 <label className="expiration">Expires in {this.props.groceryItem.expires}</label>
 
                 <FontAwesomeIcon className="delete" icon={faMinus} onClick={this.handleDelete} title="Delete this item from your list" />
-                <label className="add" title="Add to shopping list" onClick={this.handleAdd} ><FontAwesomeIcon icon={faPlus} /> Add to List</label>
+                <label className="add" title="Add to shopping list" onClick={this.handleAddToShoppingList} ><FontAwesomeIcon icon={faPlus} /> Add to List</label>
             </li>
         )
     }
