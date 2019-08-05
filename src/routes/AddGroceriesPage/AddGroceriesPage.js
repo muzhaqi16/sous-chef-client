@@ -1,28 +1,64 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types';
 import GroceriesContext from './../../contexts/GroceriesContext';
+import config from '../../config'
 import './AddGroceriesPage.css';
 
 export default class AddGroceries extends Component {
+    static propTypes = {
+        history: PropTypes.shape({
+            push: PropTypes.func,
+        }).isRequired,
+    };
     static contextType = GroceriesContext;
+
+    state = {
+        error: null,
+    };
 
     handleSubmit = ev => {
         ev.preventDefault();
+
         const { location, history } = this.props
         const destination = (location.state || {}).from || '/groceries/all'
-        const { name, category, storageLocation, reminder, quantity, expiration, unit, notes } = ev.target;
-        const id = this.context.data.groceries[this.context.data.groceries.length - 1].id;
-        const newItem = {
-            "id": parseInt(id) + 1,
+
+
+        const { name, category, storageLocation, expiration, reminder, quantity, unit, notes } = ev.target;
+        console.log(expiration.value);
+        const newGroceryItem = {
             "name": name.value,
             "category": category.value,
             "location": storageLocation.value,
-            "expires": expiration.value,
-            "reminder": reminder.value,
+            "expiry_reminder": reminder.value,
             "quantity": quantity.value,
             "unit": unit.value,
-            "notes": notes.value
+            "notes": notes.value,
+            "price": 1.55,
+            "image": 'undefined'
         }
-        this.context.addGroceries(newItem);
+        this.setState({ error: null })
+
+        fetch(config.API_ENDPOINT, {
+            method: 'POST',
+            body: JSON.stringify(newGroceryItem),
+            headers: {
+                'content-type': 'application/json',
+                'authorization': `bearer ${config.API_KEY}`
+            }
+        })
+            .then(res => {
+                if (!res.ok) {
+                    return res.json().then(error => Promise.reject(error))
+                }
+                return res.json()
+            })
+            .then(data => {
+                this.context.addGrocery(data)
+            })
+            .catch(error => {
+                console.error(error)
+                this.setState({ error })
+            })
         history.push(destination);
     }
     render() {
@@ -37,21 +73,22 @@ export default class AddGroceries extends Component {
                     <fieldset>
                         <label htmlFor='category'>Category</label>
                         <select id="category" required name="category">
-                            <option value="dry">Dry Goods</option>
-                            <option value="veg">Vegetables</option>
-                            <option value="herbs">Herbs &amp; Spices</option>
-                            <option value="oils">Oils &amp; Spices</option>
-                            <option value="frozen">Frozen</option>
-                            <option value="canned">Canned Foods</option>
-                            <option value="bottles">Bottles &amp; Jars</option>
+                            <option value="Dry Goods">Dry Goods</option>
+                            <option value="Vegetables">Vegetables</option>
+                            <option value="Herbs and Spices">Herbs &amp; Spices</option>
+                            <option value="Oils">Oils &amp; Spices</option>
+                            <option value="Frozen">Frozen</option>
+                            <option value="Canned Foods">Canned Foods</option>
+                            <option value="Bottles">Bottles</option>
+                            <option value="Jars">Jars</option>
                         </select>
                     </fieldset>
                     <fieldset>
                         <label htmlFor='location'>Storage Location</label>
                         <select id="location" required name="storageLocation">
-                            <option value="freezer">Freezer</option>
-                            <option value="fridge">Fridge</option>
-                            <option value="pantry">Pantry</option>
+                            <option value="Freezer">Freezer</option>
+                            <option value="Fridge">Fridge</option>
+                            <option value="Pantry">Pantry</option>
                         </select>
                     </fieldset>
                     <fieldset>
@@ -69,9 +106,9 @@ export default class AddGroceries extends Component {
                         <select id="unit" name="unit">
                             <option value="lbs">Pound(s)</option>
                             <option value="kg">Kilogram(s)</option>
-                            <option value="piece">Piece(s)</option>
-                            <option value="bag">Bag(s)</option>
-                            <option value="pckg">Package(s)</option>
+                            <option value="pieces">Piece(s)</option>
+                            <option value="Bag">Bag(s)</option>
+                            <option value="container">Package(s)</option>
                         </select>
                     </fieldset>
                     <fieldset>
