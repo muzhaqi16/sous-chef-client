@@ -19,7 +19,8 @@ input,button {
   margin: 0 auto;
   overflow-y: auto;
   padding-left: 0;
-  width: calc(300px + 1rem);
+  width: 100%;
+  max-width: calc(400px + 1rem);
 }
 
 .suggestions li {
@@ -47,11 +48,11 @@ input,button {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
 }
 .search-box{
   width: 100%;  
-  text-align: center;
+  max-width: calc(400px + 1rem);
 }
 .search-area button,input{
   margin-top:0;
@@ -59,11 +60,14 @@ input,button {
 @media all and (min-width: 480px) {
   .search-area{
     flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+
   }
   .search-area input{
     margin-right:1%;
   }
   .search-area button,input{
-  margin-bottom:1%;
-}
+    margin-bottom:1%;
+  }
 }

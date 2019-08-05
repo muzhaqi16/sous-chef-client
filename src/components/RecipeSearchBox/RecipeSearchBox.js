@@ -117,7 +117,7 @@ export default class RecipeSearchBox extends Component {
             const likes = item.likes;
             const title = item.title;
             const image = item.image;
-            const missingIngredients = item.missedIngredients.map(ingredient => ingredient.name)
+            const missingIngredients = item.missedIngredients.map(ingredient => ingredient.name + ', ')
             const newRecipe = { title, image, missingIngredients, id, likes };
             return newRecipe;
         })
@@ -148,7 +148,7 @@ export default class RecipeSearchBox extends Component {
                 <span className="prep-time">Pre Time : 5 minutes </span>
                 <span className="cooking-time">Cooking Time : 10 minutes </span>
                 <span className="ready-in-time">Ready in 15 minutes </span>
-                <p>Missing ingredients - {recipe.missingIngredients.length == 0 ? 'none' : recipe.missingIngredients}</p>
+                <p>Missing ingredients - {recipe.missingIngredients.length === 0 ? 'none' : recipe.missingIngredients}</p>
             </li>
         })
         let suggestionsListComponent;
