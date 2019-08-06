@@ -1,23 +1,23 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import TokenService from '../../services/token-service'
 import './Header.css'
 import logo from '../../img/logo.png';
 
 export default class Header extends Component {
     handleLogoutClick = () => {
-        console.log('Logged out');
+        TokenService.clearAuthToken();
     }
 
     renderLogoutLink() {
         return (<div>
-            <Link onClick={this.handleLogoutClick} to='/'> Logout</Link>
+            <a onClick={this.handleLogoutClick} href='/'> Logout</a>
         </div>)
     }
 
     renderLoginLink() {
         return (
             <div>
-                <Link to='/register'> Register</Link>
                 <Link to='/login'>Log in</Link>
             </div>
         )
@@ -30,7 +30,11 @@ export default class Header extends Component {
                     <button id="nav-toggle">&#9776;</button>
                     <ul id="main-nav">
                         <li><Link to="/">Home</Link></li>
-                        <li><Link to="/login">Log In</Link></li>
+                        <li>
+                            {TokenService.hasAuthToken()
+                                ? this.renderLogoutLink()
+                                : this.renderLoginLink()}
+                        </li>
                         <li><Link to="/contact">Contact</Link></li>
                     </ul>
                 </div>
