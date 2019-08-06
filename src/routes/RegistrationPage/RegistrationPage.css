@@ -1,0 +1,15 @@
+.registration-page{
+    border-radius:0; 
+    width:100%;
+    padding: 1%;
+    font-family: "Roboto", Helvetica, Arial, sans-serif;
+    font-weight: 100;
+    font-size: 16px;
+    line-height: 30px;
+    color: #777;
+    background-color: #a6d9f7;
+}
+.registration-page h2{
+    color: black;
+    font-size: 2em
+}

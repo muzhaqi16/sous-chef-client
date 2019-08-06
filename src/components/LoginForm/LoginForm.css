@@ -1,0 +1,35 @@
+.LoginnForm{
+    background: #F9F9F9;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+.LoginForm div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+.LoginForm input,button{
+    width: 90%;
+}
+ .LoginForm button{
+     background: #43A047;
+    margin-top:2%;
+    cursor: pointer;
+    border: none;
+    color: #FFF;
+    padding: 10px;
+}
+@media all and (min-width: 480px) {
+    .LoginForm{
+         max-width: 600px;
+         margin:0 auto;
+         padding: 1%;
+    }
+.LoginForm div{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .LoginForm input,button{
+    width: 70%;
+}
+}
