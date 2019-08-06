@@ -22,6 +22,7 @@ export default class RecipeSearchBox extends Component {
             recipeItems: [],
             recipes: []
         };
+
     }
 
     onChange = e => {
@@ -83,7 +84,7 @@ export default class RecipeSearchBox extends Component {
     };
     getRecipes = () => {
         const url = 'https://api.spoonacular.com/recipes/findByIngredients?ingredients=';
-        const apiKey = '405190d9b2554465948e538161346bba';
+        const apiKey = '6c127984799b490cbd26a4a7014b83de ';
         const ingredients = this.state.recipeItems.join();
         fetch(`${url}${ingredients}&apiKey=${apiKey}`)
             .then(response => response.json())
@@ -94,8 +95,8 @@ export default class RecipeSearchBox extends Component {
     }
     getRecipeInformation(id) {
         const url = `https://api.spoonacular.com/recipes/${id}/information`;
-        const apiKey = '405190d9b2554465948e538161346bba';
-        fetch(`${url}?apiKey=${apiKey}`)
+        const apiKey = '6c127984799b490cbd26a4a7014b83de ';
+        return fetch(`${url}?apiKey=${apiKey}`)
             .then(response => response.json())
             .then(data => this.handleInformation(data))
             .catch(error => {
@@ -112,17 +113,21 @@ export default class RecipeSearchBox extends Component {
         return info;
     }
     handleRecipes = (data) => {
-        const newRecipes = data.map(item => {
-            const id = item.id;
-            const likes = item.likes;
-            const title = item.title;
-            const image = item.image;
-            const missingIngredients = item.missedIngredients.map(ingredient => ingredient.name + ', ')
-            const newRecipe = { title, image, missingIngredients, id, likes };
-            return newRecipe;
-        })
-        this.setState({ recipes: newRecipes });
-        return newRecipes;
+        let fetchArray = data.map(item =>
+            this.getRecipeInformation(item.id));
+
+        Promise.all(fetchArray).then(recipes => {
+            recipes.map((info, i) => {
+                const { id, image, likes, title, missedIngredients } = data[i];
+                const { cookingMinutes, preparationMinutes, readyInMinutes, servings } = info;
+                const missingIngredientsString = missedIngredients.map(ingredient => ingredient.name + ', ');
+                const newRecipe = { title, image, missingIngredientsString, id, likes, cookingMinutes, preparationMinutes, readyInMinutes, servings };
+
+                this.setState({ recipes: [...this.state.recipes, newRecipe] });
+                return newRecipe;
+            })
+        }
+        )
     }
     render() {
         const { onChange, onClick, onKeyDown, getRecipes,
@@ -144,11 +149,12 @@ export default class RecipeSearchBox extends Component {
                     <img src={recipe.image} alt={recipe.title} />
                     <h1>{recipe.title}</h1>
                 </div>
-                <span className="servings">Servings : 2 </span>
-                <span className="prep-time">Pre Time : 5 minutes </span>
-                <span className="cooking-time">Cooking Time : 10 minutes </span>
-                <span className="ready-in-time">Ready in 15 minutes </span>
-                <p>Missing ingredients - {recipe.missingIngredients.length === 0 ? 'none' : recipe.missingIngredients}</p>
+                <span className="servings">Servings : {recipe.servings} </span>
+                <span className="likes">Likes : {recipe.likes} </span>
+                <span className="prep-time">Prep Time : {recipe.preparationMinutes} minutes </span>
+                <span className="cooking-time">Cooking Time : {recipe.cookingMinutes} minutes </span>
+                <span className="ready-in-time">Ready in {recipe.readyInMinutes} minutes </span>
+                <p>Missing ingredients - {recipe.missingIngredientsString.length === 0 ? 'none' : recipe.missingIngredientsString}</p>
             </li>
         })
         let suggestionsListComponent;

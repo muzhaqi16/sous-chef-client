@@ -28,8 +28,12 @@
     align-items: flex-start;
 }
 .recipes-list li h1{
+    font-size: 1em;
     padding: 0;
     margin:0;
+}
+.recipes-list li span{
+    display: block;
 }
 .recipes-list p {
     display: block;
