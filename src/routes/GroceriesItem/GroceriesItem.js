@@ -10,7 +10,7 @@ export default class GroceriesListPage extends Component {
 
     handleDelete = ev => {
         const id = this.props.groceryItem.id;
-        fetch(config.API_ENDPOINT + `/${id}`, {
+        fetch(config.API_ENDPOINT + `/groceries/${id}`, {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json',

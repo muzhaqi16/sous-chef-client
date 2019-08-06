@@ -62,11 +62,11 @@ class App extends Component {
     })
   }
   componentDidMount() {
-    fetch(config.API_ENDPOINT, {
+    fetch(config.API_ENDPOINT + '/groceries', {
       method: 'GET',
       headers: {
         'content-type': 'application/json',
-        'Authorization': `Bearer ${config.API_KEY}`
+        'Authorization': `bearer ${config.API_KEY}`
       }
     })
       .then(res => {
