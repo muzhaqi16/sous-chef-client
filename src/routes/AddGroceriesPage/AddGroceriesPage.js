@@ -39,7 +39,7 @@ export default class AddGroceries extends Component {
         }
         this.setState({ error: null })
 
-        fetch(config.API_ENDPOINT, {
+        fetch(config.API_ENDPOINT + '/groceries', {
             method: 'POST',
             body: JSON.stringify(newGroceryItem),
             headers: {
