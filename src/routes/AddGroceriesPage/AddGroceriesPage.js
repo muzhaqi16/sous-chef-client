@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types';
 import GroceriesContext from './../../contexts/GroceriesContext';
+import TokenService from '../../services/token-service'
 import config from '../../config'
 import './AddGroceriesPage.css';
 
@@ -33,8 +34,7 @@ export default class AddGroceries extends Component {
             "unit": unit.value,
             "notes": notes.value,
             "price": 1.55,
-            "image": 'undefined',
-            "user_id": 1
+            "image": 'undefined'
 
         }
         this.setState({ error: null })
@@ -44,7 +44,7 @@ export default class AddGroceries extends Component {
             body: JSON.stringify(newGroceryItem),
             headers: {
                 'content-type': 'application/json',
-                'authorization': `bearer ${config.API_KEY}`
+                'authorization': `bearer ${TokenService.getAuthToken()}`
             }
         })
             .then(res => {

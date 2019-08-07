@@ -2,6 +2,7 @@ import React from 'react'
 
 const GroceriesContext = React.createContext({
     data: {},
+    setGroceries: () => { },
     addGrocery: () => { },
     deleteGrocery: () => { },
     addShoppingListItem: () => { },

@@ -22,7 +22,7 @@ export default class LoginForm extends Component {
         })
             .then(res => {
                 user_name.value = ''
-                password.value = ''
+                password.value = '';
                 TokenService.saveAuthToken(res.authToken)
                 this.props.onLoginSuccess()
             })

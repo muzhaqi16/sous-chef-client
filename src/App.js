@@ -11,8 +11,9 @@ import RegistrationPage from './routes/RegistrationPage/RegistrationPage'
 import NotFoundPage from './routes/NotFoundPage/NotFoundPage';
 import GroceriesContext from './contexts/GroceriesContext';
 import './App.css';
-import config from './config';
 import ShoppingListPage from './routes/ShoppingListPage/ShoppingListPage';
+import PrivateRoute from './components/Utils/PrivateRoute'
+import PublicOnlyRoute from './components/Utils/PublicOnlyRoute'
 
 class App extends Component {
   state = {
@@ -61,26 +62,6 @@ class App extends Component {
       shoppingList: this.state.shoppingList.filter(listItem => listItem.name !== item),
     })
   }
-  componentDidMount() {
-    fetch(config.API_ENDPOINT + '/groceries', {
-      method: 'GET',
-      headers: {
-        'content-type': 'application/json',
-        'Authorization': `bearer ${config.API_KEY}`
-      }
-    })
-      .then(res => {
-        if (!res.ok) {
-          return res.json().then(error => Promise.reject(error))
-        }
-        return res.json()
-      })
-      .then(this.setGroceries)
-      .catch(error => {
-        console.error(error)
-        this.setState({ hasError: error })
-      })
-  }
 
   static getDerivedStateFromError(error) {
     console.error(error)
@@ -90,6 +71,7 @@ class App extends Component {
   render() {
     const contextValue = {
       data: this.state,
+      setGroceries: this.setGroceries,
       addGrocery: this.addGrocery,
       deleteGrocery: this.deleteGrocery,
       addShoppingListItem: this.addShoppingListItem,
@@ -110,25 +92,25 @@ class App extends Component {
                 path={'/'}
                 component={LandingPage}
               />
-              <Route
+              <PublicOnlyRoute
                 path={'/login'}
                 component={LoginPage}
               />
-              <Route
+              <PublicOnlyRoute
                 path={'/register'}
                 component={RegistrationPage}
               />
-              <Route
+              <PrivateRoute
                 path={'/groceries/:path'}
                 component={GroceriesPage}
               />
-              <Route path={'/recipes'}
+              <PrivateRoute path={'/recipes'}
                 component={RecipesPage} />
-              <Route
+              <PrivateRoute
                 path={'/add_groceries'}
                 component={AddGroceriesPage}
               />
-              <Route path={'/shopping_list'}
+              <PrivateRoute path={'/shopping_list'}
                 component={ShoppingListPage} />
               <Route
                 component={NotFoundPage}
