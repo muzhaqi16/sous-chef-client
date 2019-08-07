@@ -33,7 +33,9 @@ export default class AddGroceries extends Component {
             "unit": unit.value,
             "notes": notes.value,
             "price": 1.55,
-            "image": 'undefined'
+            "image": 'undefined',
+            "user_id": 1
+
         }
         this.setState({ error: null })
 
