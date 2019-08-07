@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import config from '../../config'
 import TokenService from '../../services/token-service'
+import GroceriesContext from './../../contexts/GroceriesContext';
 import LoginForm from '../../components/LoginForm/LoginForm'
 import './LoginPage.css'
 
 export default class LoginPage extends Component {
+    static contextType = GroceriesContext;
     static defaultProps = {
         location: {},
         history: {
