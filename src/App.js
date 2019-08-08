@@ -18,15 +18,7 @@ import PublicOnlyRoute from './components/Utils/PublicOnlyRoute'
 class App extends Component {
   state = {
     groceries: [],
-    shoppingList: [{
-      "name": "Apples"
-    }, {
-      "name": "Oranges"
-    },
-    {
-      "name": "Ice Cream"
-    }
-    ],
+    shoppingList: [],
     hasError: false
   };
 

@@ -211,15 +211,6 @@ export default class RecipeSearchBox extends Component {
                 </div>
                 <ul className="recipes-list">
                     {recipesList}
-                    <li>
-                        <div className="header">
-                            <img src={require('./../../img/undefined.png')} alt="vitamin" />
-                            <h1>Vitamin C Booster Smothie</h1>
-                        </div>
-                        <p>Pre time : 5 minutes</p>
-                        <p> Missing :  Carrots</p>
-                    </li>
-                    <li><img src={require('./../../img/undefined.png')} alt="beet juice" />Wake Up Call: Sweet Beet Juice Missing: Beets</li>
                 </ul>
 
             </Fragment>
