@@ -34,6 +34,7 @@ export default class RegistrationForm extends Component {
     }
 
     render() {
+        const { error } = this.state
         return (
             <form
                 className='RegistrationForm'
