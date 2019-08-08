@@ -5,10 +5,16 @@ import './Header.css'
 import logo from '../../img/logo.png';
 
 export default class Header extends Component {
+    state = {
+        hidden: true
+    };
     handleLogoutClick = () => {
+        this.setState({ hidden: !this.state.hidden })
         TokenService.clearAuthToken();
     }
-
+    handleClick = () => {
+        this.setState({ hidden: !this.state.hidden })
+    }
     renderLogoutLink() {
         return (<div>
             <a onClick={this.handleLogoutClick} href='/'> Log out</a>
@@ -18,7 +24,7 @@ export default class Header extends Component {
     renderLoginLink() {
         return (
             <div>
-                <Link to='/login'>Log in</Link>
+                <Link to='/login' onClick={() => this.setState({ hidden: !this.state.hidden })}>Log in</Link>
             </div>
         )
     }
@@ -27,16 +33,16 @@ export default class Header extends Component {
             <nav role="navigation">
                 <Link to="/" id="logo-link"><img src={logo} alt="sous chef logo" id="logo" /></Link>
                 <div className="menu">
-                    <button id="nav-toggle">&#9776;</button>
-                    <ul id="main-nav">
-                        <li><Link to="/">Home</Link></li>
+                    <ul id="main-nav" className={this.state.hidden ? "hidden" : ""}>
+                        <li><Link to="/" onClick={() => this.setState({ hidden: !this.state.hidden })}>Home</Link></li>
                         <li>
                             {TokenService.hasAuthToken()
                                 ? this.renderLogoutLink()
                                 : this.renderLoginLink()}
                         </li>
-                        <li><Link to="/contact">Contact</Link></li>
+                        <li><Link to="/contact" onClick={() => this.setState({ hidden: !this.state.hidden })}>Contact</Link></li>
                     </ul>
+                    <button id="nav-toggle" onClick={this.handleClick}>&#9776;</button>
                 </div>
             </nav>
         )

@@ -30,8 +30,7 @@ export default class GroceriesListPage extends Component {
 
     }
     handleAddToShoppingList = ev => {
-        const id = this.props.groceryItem.id;
-        this.context.addShoppingListItem(this.context.data.groceries[id - 1]);
+        this.context.addShoppingListItem({ "name": this.props.groceryItem.name });
     }
     render() {
         return (
@@ -42,7 +41,7 @@ export default class GroceriesListPage extends Component {
                     <p>{this.props.groceryItem.quantity} {this.props.groceryItem.unit}</p>
                 </div>
 
-                <label className="expiration">Expires in {this.props.groceryItem.expires}</label>
+                <label className="expiration">Expires in <span>{this.props.groceryItem.expiry_date}</span></label>
 
                 <FontAwesomeIcon className="delete" icon={faMinus} onClick={this.handleDelete} title="Delete this item from your list" />
                 <label className="add" title="Add to shopping list" onClick={this.handleAddToShoppingList} ><FontAwesomeIcon icon={faPlus} /> Add to List</label>

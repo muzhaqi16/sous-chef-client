@@ -1,22 +1,29 @@
-.LoginnForm{
-    background: #F9F9F9;
-    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+.LoginForm{
+    font-size: 1.25em;
+     color: black;
+    font-weight:normal;
 }
 .LoginForm div{
     display: flex;
     flex-direction: column;
     align-items: center;
   }
+  .LoginForm p.red{
+      color: red;
+  }
 .LoginForm input,button{
     width: 90%;
 }
  .LoginForm button{
-     background: #43A047;
+    background: #43A047;
     margin-top:2%;
     cursor: pointer;
     border: none;
     color: #FFF;
     padding: 10px;
+}
+.LoginForm p{
+    color: black;
 }
 @media all and (min-width: 480px) {
     .LoginForm{

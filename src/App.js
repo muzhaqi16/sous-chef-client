@@ -19,21 +19,14 @@ class App extends Component {
   state = {
     groceries: [],
     shoppingList: [{
-      "id": "1",
-      "name": "Apples",
-      "quantity": 2,
-      "unit": "pounds"
+      "name": "Apples"
     }, {
-      "id": "2",
-      "name": "Oranges",
-      "image": "orange"
+      "name": "Oranges"
     },
     {
-      "id": "3",
-      "name": "Ice Cream",
-      "quantity": 1,
-      "unit": "container"
-    },],
+      "name": "Ice Cream"
+    }
+    ],
     hasError: false
   };
 

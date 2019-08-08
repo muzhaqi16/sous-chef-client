@@ -23,14 +23,13 @@ export default class ShoppingListPage extends Component {
         const { shoppingList = [] } = this.context.data;
 
         const itemsList = shoppingList.map(item => {
-            return <li className="shopping-item" key={item.id}>
+            return <li className="shopping-item" key={item.name}>
                 <div className="status">
                     <input type="checkbox" className="unchecked" />
                 </div>
 
                 <div className="item-name">
                     <h3>{item.name} &nbsp;</h3>
-                    <p> {item.quantity} {item.unit} </p>
                 </div>
                 <FontAwesomeIcon className="remove" icon={faTrash} onClick={() => this.handleDelete(item.name)} title="Delete this item from your list" />
             </li>

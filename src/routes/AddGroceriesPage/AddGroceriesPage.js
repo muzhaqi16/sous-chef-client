@@ -75,9 +75,11 @@ export default class AddGroceries extends Component {
                         <label htmlFor='category'>Category</label>
                         <select id="category" required name="category">
                             <option value="Dry Goods">Dry Goods</option>
+                            <option value="Fruits">Fruits</option>
                             <option value="Vegetables">Vegetables</option>
                             <option value="Herbs and Spices">Herbs &amp; Spices</option>
                             <option value="Oils">Oils &amp; Spices</option>
+                            <option value="Dressings">Dressings</option>
                             <option value="Frozen">Frozen</option>
                             <option value="Canned Foods">Canned Foods</option>
                             <option value="Bottles">Bottles</option>
@@ -93,7 +95,7 @@ export default class AddGroceries extends Component {
                         </select>
                     </fieldset>
                     <fieldset>
-                        <label htmlFor="reminder">Expiry date reminder </label>
+                        <label htmlFor="reminder" id="reminder-label">Expiry date reminder </label>
                         <input type="checkbox" id="reminder" />
                     </fieldset>
                     <fieldset>
@@ -107,9 +109,13 @@ export default class AddGroceries extends Component {
                         <select id="unit" name="unit">
                             <option value="lbs">Pound(s)</option>
                             <option value="kg">Kilogram(s)</option>
+                            <option value="Jar">Jar</option>
+                            <option value="can">Can</option>
+                            <option value="bottle">Bottle</option>
+                            <option value="gallon">Gallon(s)</option>
                             <option value="pieces">Piece(s)</option>
                             <option value="Bag">Bag(s)</option>
-                            <option value="container">Package(s)</option>
+                            <option value="container">Container(s)</option>
                         </select>
                     </fieldset>
                     <fieldset>
@@ -119,8 +125,8 @@ export default class AddGroceries extends Component {
                     <button type='submit'>
                         Add Item
                     </button>
-                    <button type='submit'>
-                        Cancel
+                    <button type='reset'>
+                        Reset
                     </button>
                 </form>
             </section>

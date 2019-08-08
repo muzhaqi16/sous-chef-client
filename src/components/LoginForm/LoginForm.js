@@ -17,7 +17,7 @@ export default class LoginForm extends Component {
         const { user_name, password } = ev.target
 
         AuthApiService.postLogin({
-            user_name: user_name.value,
+            user_name: user_name.value.toLowerCase(),
             password: password.value,
         })
             .then(res => {
@@ -46,6 +46,7 @@ export default class LoginForm extends Component {
                         User name
           </label>
                     <input
+                        placeholder="username"
                         required
                         name='user_name'
                         id='user_name'>
@@ -57,6 +58,7 @@ export default class LoginForm extends Component {
           </label>
                     <input
                         required
+                        placeholder='password'
                         name='password'
                         type='password'
                         id='password'>

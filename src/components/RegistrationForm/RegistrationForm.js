@@ -47,6 +47,7 @@ export default class RegistrationForm extends Component {
                     <input
                         name='first_name'
                         type='text'
+                        placeholder='John'
                         required
                         id='first_name'>
                     </input>
@@ -58,6 +59,7 @@ export default class RegistrationForm extends Component {
                     <input
                         name='last_name'
                         type='text'
+                        placeholder="Doe"
                         required
                         id='last_name'>
                     </input>
@@ -69,6 +71,7 @@ export default class RegistrationForm extends Component {
                     <input
                         name='user_name'
                         type='text'
+                        placeholder="jdoe"
                         required
                         id='user_name'>
                     </input>
@@ -80,6 +83,7 @@ export default class RegistrationForm extends Component {
                     <input
                         name='email'
                         type='text'
+                        placeholder="john@doe.com"
                         required
                         id='email'>
                     </input>
@@ -91,6 +95,7 @@ export default class RegistrationForm extends Component {
                     <input
                         name='password'
                         type='password'
+                        placeholder="password"
                         required
                         id='password'>
                     </input>

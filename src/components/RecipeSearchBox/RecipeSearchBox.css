@@ -54,8 +54,11 @@ input,button {
   width: 100%;  
   max-width: calc(400px + 1rem);
 }
-.search-area button,input{
+.search-area button{
   margin-top:0;
+  width: 100%;
+    background: #4CAF50;
+    color: white;
 }
 @media all and (min-width: 480px) {
   .search-area{

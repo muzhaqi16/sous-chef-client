@@ -31,18 +31,27 @@ img {
     position: absolute;
     bottom: 10px;
 }
-
+.expiration span{
+    color:blue;
+    display: block;
+}
 .delete {
     color: red;
     position: absolute;
     right: 10px;
     top: 10px;
 }
-
+svg.delete:hover{
+font-size: 30px;
+}
 .add {
     color: green;
     position: absolute;
     bottom: 10px;
     right: 10px;
     font-size: 14px;
+}
+.add:hover{
+    font-size: 16px;
+    color: green;
 }

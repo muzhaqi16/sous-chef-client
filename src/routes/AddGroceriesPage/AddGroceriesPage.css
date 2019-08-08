@@ -6,7 +6,6 @@
   font-weight: 100;
   font-size: 14px;
   line-height: 30px;
-  color: #777;
   padding: 1%;
   border-radius: 0;
   background-color: #a6d9f7;
@@ -27,7 +26,7 @@
   padding: 10px;
   font-size: 14px;
 }
-#add-groceries-form button[type="submit"] {
+#add-groceries-form button {
   cursor: pointer;
   width: 100%;
   border: none;
@@ -37,13 +36,12 @@
   padding: 10px;
   font-size: 15px;
 }
-#add-groceries-form button[type="submit"]:hover {
+#add-groceries-form button:hover {
   background: #43A047;
 }
-#add-groceries-from label{
-  margin: 5px 0 15px;
+#add-groceries-form label{
   display: block;
-  font-size: 13px;
+  font-size: 1.25em;
   font-weight: 400;
 }
 fieldset {
@@ -64,6 +62,9 @@ fieldset {
 }
 #add-groceries-form #quantity,#unit{
   width: 49%;
+}
+label#reminder-label{
+  display: inline;
 }
 @media all and (min-width: 480px) {
   
