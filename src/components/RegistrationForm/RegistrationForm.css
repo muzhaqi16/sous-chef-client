@@ -19,6 +19,9 @@
     color: #FFF;
     padding: 10px;
 }
+ .RegistrationForm p.red{
+      color: red;
+  }
 @media all and (min-width: 480px) {
     .RegistrationForm{
          max-width: 600px;
