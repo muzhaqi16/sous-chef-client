@@ -22,6 +22,14 @@
  .RegistrationForm p.red{
       color: red;
   }
+  .RegistrationForm p.suggestion{
+     font-size: 0.8em;
+    margin-top:0px;
+    padding-top:0px;
+    line-height: 16px; 
+    color: #ED577E;
+    text-align: left;
+  }
 @media all and (min-width: 480px) {
     .RegistrationForm{
          max-width: 600px;

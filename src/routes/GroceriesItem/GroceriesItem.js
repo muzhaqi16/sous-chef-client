@@ -33,6 +33,10 @@ export default class GroceriesListPage extends Component {
         this.context.addShoppingListItem({ "name": this.props.groceryItem.name });
     }
     render() {
+        let current_datetime = new Date(this.props.groceryItem.expiry_date)
+        const months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+        let formatted_date = months[current_datetime.getMonth()] + "-" + (current_datetime.getDate() + 1) + "-" + current_datetime.getFullYear();
+
         return (
             <li className="grocery-item">
                 <img src={require('./../../img/' + this.props.groceryItem.image + '.png')} alt={this.props.groceryItem.name} />
@@ -41,7 +45,7 @@ export default class GroceriesListPage extends Component {
                     <p>{this.props.groceryItem.quantity} {this.props.groceryItem.unit}</p>
                 </div>
 
-                <label className="expiration">Expires in <span>{this.props.groceryItem.expiry_date}</span></label>
+                <label className="expiration">Expires in <span>{formatted_date}</span></label>
 
                 <FontAwesomeIcon className="delete" icon={faMinus} onClick={this.handleDelete} title="Delete this item from your list" />
                 <label className="add" title="Add to shopping list" onClick={this.handleAddToShoppingList} ><FontAwesomeIcon icon={faPlus} /> Add to List</label>

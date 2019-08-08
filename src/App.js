@@ -7,6 +7,7 @@ import RecipesPage from './routes/RecipesPage/RecipesPage';
 import AddGroceriesPage from './routes/AddGroceriesPage/AddGroceriesPage';
 import Footer from './components/Footer/Footer'
 import LoginPage from './routes/LoginPage/LoginPage'
+import ContactPage from './routes/ContactPage/ContactPage'
 import RegistrationPage from './routes/RegistrationPage/RegistrationPage'
 import NotFoundPage from './routes/NotFoundPage/NotFoundPage';
 import GroceriesContext from './contexts/GroceriesContext';
@@ -84,6 +85,10 @@ class App extends Component {
               <PublicOnlyRoute
                 path={'/register'}
                 component={RegistrationPage}
+              />
+              <Route
+                path={'/contact'}
+                component={ContactPage}
               />
               <PrivateRoute
                 path={'/groceries/:path'}

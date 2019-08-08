@@ -8,9 +8,7 @@
     flex-direction: column;
     align-items: center;
   }
-  .LoginForm p.red{
-      color: red;
-  }
+
 .LoginForm input,button{
     width: 90%;
 }
@@ -24,6 +22,16 @@
 }
 .LoginForm p{
     color: black;
+}
+.LoginForm p.red{
+      color: red;
+  }
+p.suggestion{
+    font-size: 0.8em;
+    margin-top:0px;
+    padding-top:0px;
+    line-height: 0px; 
+    color: #ED577E;
 }
 @media all and (min-width: 480px) {
     .LoginForm{

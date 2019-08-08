@@ -41,10 +41,10 @@ export default class LoginForm extends Component {
                 <div role='alert'>
                     {error && <p className='red'>{error}</p>}
                 </div>
-                <p>Use 'test' as default username</p>
+
                 <div className='user_name'>
                     <label htmlFor='user_name'>
-                        User name
+                        Username
           </label>
                     <input
                         placeholder="test"
@@ -52,8 +52,9 @@ export default class LoginForm extends Component {
                         name='user_name'
                         id='user_name'>
                     </input>
+
                 </div>
-                <p>Use 'Test123!' as default password</p>
+                <p className="suggestion">Use 'test' as default username</p>
                 <div className='password'>
                     <label htmlFor='password'>
                         Password
@@ -66,6 +67,7 @@ export default class LoginForm extends Component {
                         id='password'>
                     </input>
                 </div>
+                <p className="suggestion">Use 'Test123!' as default password</p>
                 <p>Don't have an account ? <Link to='/register'>Register Now</Link></p>
                 <button type='submit'>
                     Login

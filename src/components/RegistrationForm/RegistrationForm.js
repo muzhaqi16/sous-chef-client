@@ -69,7 +69,7 @@ export default class RegistrationForm extends Component {
                 </div>
                 <div className='user_name'>
                     <label htmlFor='user_name'>
-                        User name
+                        Username
                     </label>
                     <input
                         name='user_name'
@@ -102,7 +102,9 @@ export default class RegistrationForm extends Component {
                         required
                         id='password'>
                     </input>
+
                 </div>
+                <p className="suggestion">* Password must be at least 8 characters long and contain one upper case, lower case, number and special character </p>
                 <button type='submit'>
                     Register
         </button>
