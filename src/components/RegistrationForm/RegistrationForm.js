@@ -39,7 +39,9 @@ export default class RegistrationForm extends Component {
                 className='RegistrationForm'
                 onSubmit={this.handleSubmit}
             >
-
+                <div role='alert'>
+                    {error && <p className='red'>{error}</p>}
+                </div>
                 <div className='first_name'>
                     <label htmlFor='first_name'>
                         First name
