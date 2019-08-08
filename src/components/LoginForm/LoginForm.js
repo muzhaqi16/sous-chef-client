@@ -41,24 +41,26 @@ export default class LoginForm extends Component {
                 <div role='alert'>
                     {error && <p className='red'>{error}</p>}
                 </div>
+                <p>Use 'test' as default username</p>
                 <div className='user_name'>
                     <label htmlFor='user_name'>
                         User name
           </label>
                     <input
-                        placeholder="username"
+                        placeholder="test"
                         required
                         name='user_name'
                         id='user_name'>
                     </input>
                 </div>
+                <p>Use 'Test123!' as default password</p>
                 <div className='password'>
                     <label htmlFor='password'>
                         Password
           </label>
                     <input
                         required
-                        placeholder='password'
+                        placeholder='Test123!'
                         name='password'
                         type='password'
                         id='password'>
