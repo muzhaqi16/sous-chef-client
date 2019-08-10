@@ -83,7 +83,10 @@ p {
 .remove:hover {
     font-size: 1.5em;
 }
-
+p.red{
+      color: red;
+      margin: 0;
+  }
 @media all and (min-width: 480px) {
     .shoppingListPage h1{
         font-size: 1.75em;

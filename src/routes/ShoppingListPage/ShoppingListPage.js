@@ -6,11 +6,16 @@ import './ShoppingListPage.css';
 
 export default class ShoppingListPage extends Component {
     static contextType = GroceriesContext;
+    state = { error: null }
     handleAddItem = ev => {
         ev.preventDefault();
+        this.setState({ error: null })
         const { name } = ev.target;
+        if (!name.value.trim()) {
+            this.setState({ error: 'The item name can not be empty' });
+            return false;
+        }
         const newItem = {
-            "id": Math.floor((Math.random() * 100) + 1),
             "name": name.value
         }
         this.context.addShoppingListItem(newItem);
@@ -21,7 +26,7 @@ export default class ShoppingListPage extends Component {
     }
     render() {
         const { shoppingList = [] } = this.context.data;
-
+        const { error } = this.state
         const itemsList = shoppingList.map(item => {
             return <li className="shopping-item" key={item.name}>
                 <div className="status">
@@ -40,8 +45,12 @@ export default class ShoppingListPage extends Component {
                 <h1>This is your ShoppingListPage</h1>
 
                 <section className="shoppingList">
+
                     <form onSubmit={this.handleAddItem}>
                         <input type="text" placeholder="To buy" name="name" required /><button type="submit"><span>Add </span><FontAwesomeIcon icon={faCartPlus} /></button>
+                        <div role='alert'>
+                            {error && <p className='red'>{error}</p>}
+                        </div>
                     </form>
 
                     <ul>
