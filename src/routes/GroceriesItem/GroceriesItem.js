@@ -7,7 +7,9 @@ import './GroceriesItem.css';
 
 export default class GroceriesListPage extends Component {
     static contextType = GroceriesContext;
-
+    static defaultProps = {
+        addToList: () => { }
+    };
     handleDelete = ev => {
         const id = this.props.groceryItem.id;
         fetch(config.API_ENDPOINT + `/groceries/${id}`, {
@@ -26,19 +28,16 @@ export default class GroceriesListPage extends Component {
             .catch(error => {
                 console.error(error)
             })
-
-
-    }
-    handleAddToShoppingList = ev => {
-        this.context.addShoppingListItem({ "name": this.props.groceryItem.name });
     }
     render() {
+
         let current_datetime = new Date(this.props.groceryItem.expiry_date)
         const months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
         let formatted_date = months[current_datetime.getMonth()] + "-" + (current_datetime.getDate() + 1) + "-" + current_datetime.getFullYear();
 
         return (
             <li className="grocery-item">
+
                 <img src={require('./../../img/' + this.props.groceryItem.image + '.png')} alt={this.props.groceryItem.name} />
                 <div className="item-info">
                     <h3>{this.props.groceryItem.name}</h3>
@@ -48,7 +47,8 @@ export default class GroceriesListPage extends Component {
                 <label className="expiration">Expires in <span>{formatted_date}</span></label>
 
                 <FontAwesomeIcon className="delete" icon={faMinus} onClick={this.handleDelete} title="Delete this item from your list" />
-                <label className="add" title="Add to shopping list" onClick={this.handleAddToShoppingList} ><FontAwesomeIcon icon={faPlus} /> Add to List</label>
+                <label className="add" title="Add to shopping list" onClick={() => this.props.addToList(this.props.groceryItem.name)} ><FontAwesomeIcon icon={faPlus} /> Add to List</label>
+
             </li>
         )
     }

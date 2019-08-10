@@ -10,7 +10,7 @@
     text-align: left;
     padding: 0;
     border-radius: 0;
-    
+
     background-color: #a6d9f7;
 }
 
@@ -27,21 +27,29 @@
 .GroceryList li:nth-child(even) {
     background-color: #ddd;
 }
-.options a{
+
+.options a {
     text-decoration: none;
     font-size: 1.25em;
     color: black;
     padding: 1%;
 }
-.options a:hover{
+
+.options a:hover {
     color: white;
 }
+
+#error_alert {
+    text-align: center;
+}
+
 @media all and (max-width: 480px) {
-    .GroceryList ul{
+    .GroceryList ul {
         padding: 0;
         margin: 0px;
     }
-  .GroceryList li img{
-    display: none;
-  }
+
+    .GroceryList li img {
+        display: none;
+    }
 }

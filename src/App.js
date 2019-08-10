@@ -38,10 +38,17 @@ class App extends Component {
       groceries: this.state.groceries.filter(grocery => grocery.id !== groceryItemId)
     })
   }
+  checkIfItemExists = newItem => {
+    return this.state.shoppingList.find(item => item.name === newItem.name)
+  }
   addShoppingListItem = item => {
-    this.setState({
-      shoppingList: [...this.state.shoppingList, item],
-    })
+    if (!this.checkIfItemExists(item)) {
+      this.setState({
+        shoppingList: [...this.state.shoppingList, item],
+      })
+      return true
+    }
+    return false
   }
   removeShoppingListItem = item => {
     this.setState({

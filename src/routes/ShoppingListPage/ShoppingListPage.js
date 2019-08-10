@@ -28,6 +28,7 @@ export default class ShoppingListPage extends Component {
             if (item.name === name) {
                 item.checked = !item.checked
             }
+            return true;
         })
         this.setState({
             shoppingList: newShoppingList
