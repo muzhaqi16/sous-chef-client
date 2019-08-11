@@ -19,7 +19,8 @@ export default class ShoppingListPage extends Component {
             "name": name.value,
             "checked": false
         }
-        this.context.addShoppingListItem(newItem);
+        const status = this.context.addShoppingListItem(newItem);
+        (!status && this.setState({ error: 'Item is already on your shopping list' }))
         ev.target.reset();
     }
     handleItemCheck = name => {
@@ -31,11 +32,13 @@ export default class ShoppingListPage extends Component {
             return true;
         })
         this.setState({
-            shoppingList: newShoppingList
+            shoppingList: newShoppingList,
+            error: null
         })
         return true;
     }
     handleDelete(name) {
+        this.setState({ error: null })
         this.context.removeShoppingListItem(name);
     }
     render() {
