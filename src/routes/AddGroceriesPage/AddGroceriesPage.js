@@ -14,7 +14,46 @@ export default class AddGroceries extends Component {
     static contextType = GroceriesContext;
 
     state = {
+        filteredSuggestions: [],
+        currentItem: [{ name: "" }],
+        currentInput: "",
+        productUnit: [],
         error: null,
+    };
+    onKeyUp = e => {
+        const currentItem = e.currentTarget.value;
+        const url = `https://api.spoonacular.com/food/ingredients/autocomplete?query=${currentItem}&number=5&metaInformation=true`;
+        const apiKey = '6c127984799b490cbd26a4a7014b83de ';
+        fetch(`${url}&apiKey=${apiKey}`)
+            .then(response => response.json())
+            .then(data => this.setState({
+                filteredSuggestions: data,
+                currentInput: currentItem
+            }))
+            .catch(error => {
+                console.error(error.message + '. Could not search for ingredient')
+            })
+    }
+    onClick = id => {
+        const selectedItem = this.state.filteredSuggestions.filter(item => item.id === id);
+        const url = `https://api.spoonacular.com/food/ingredients/${id}/information`
+        const apiKey = '6c127984799b490cbd26a4a7014b83de ';
+        fetch(`${url}?apiKey=${apiKey}`)
+            .then(response => response.json())
+            .then(data => this.setState({ productUnit: data.shoppingListUnits }))
+            .catch(error => {
+                console.error(error.message + '. Could not get ingredient information')
+            })
+        this.setState({
+            currentItem: selectedItem,
+            currentInput: selectedItem[0].name,
+            filteredSuggestions: []
+        });
+    }
+    onChange = e => {
+        this.setState({
+            currentInput: e.currentTarget.value
+        });
     };
 
     handleSubmit = ev => {
@@ -34,7 +73,7 @@ export default class AddGroceries extends Component {
             "unit": unit.value,
             "notes": notes.value,
             "price": 1.55,
-            "image": 'undefined'
+            "image": this.state.currentItem[0].name
 
         }
         this.setState({ error: null })
@@ -63,17 +102,22 @@ export default class AddGroceries extends Component {
         history.push(destination);
     }
     render() {
+        const filteredSuggestions = this.state.filteredSuggestions;
+
+        const suggestions = filteredSuggestions.map(item => <li key={item.id} onClick={() => this.onClick(item.id)}>{item.name}</li>)
         return (
             <section className="add-grocery-items-section">
-                <form onSubmit={this.handleSubmit} method="post" id="add-groceries-form">
+                <form onSubmit={this.handleSubmit} method="post" id="add-groceries-form" autoComplete="off">
                     <h2>Add Groceries</h2>
                     <fieldset>
                         <label htmlFor='name'>Name</label>
-                        <input type="text" id="name" required aria-label='Enter grocery item name...' name='name' tabIndex="1" autoFocus placeholder="Grocery item name" />
+                        <input type="text" id="name" onChange={this.onChange} value={this.state.currentInput} required aria-label='Start typing grocery item name' name='name' tabIndex="1" autoFocus placeholder="Start typing grocery item name" onKeyUp={this.onKeyUp} />
+                        <ul className="suggestion-list">{suggestions}</ul>
                     </fieldset>
                     <fieldset>
                         <label htmlFor='category'>Category</label>
                         <select id="category" required name="category">
+                            <option value={this.state.currentItem[0].aisle}>{this.state.currentItem[0].aisle}</option>
                             <option value="Dry Goods">Dry Goods</option>
                             <option value="Fruits">Fruits</option>
                             <option value="Vegetables">Vegetables</option>
@@ -86,6 +130,7 @@ export default class AddGroceries extends Component {
                             <option value="Jars">Jars</option>
                         </select>
                     </fieldset>
+
                     <fieldset>
                         <label htmlFor='location'>Storage Location</label>
                         <select id="location" required name="storageLocation">
@@ -107,6 +152,7 @@ export default class AddGroceries extends Component {
                         <input type="number" id="quantity" defaultValue="1" max="100" min="1" name="quantity" />
 
                         <select id="unit" name="unit">
+                            <option value={this.state.productUnit[0]}>{this.state.productUnit[0]}</option>
                             <option value="lbs">Pound(s)</option>
                             <option value="kg">Kilogram(s)</option>
                             <option value="Jar">Jar</option>
