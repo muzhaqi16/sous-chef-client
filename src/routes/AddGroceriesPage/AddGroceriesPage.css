@@ -80,6 +80,18 @@ label#reminder-label{
   background: #00D0EA ;
   cursor: pointer;
 }
+button#close-page-button{
+  float: right;
+  font-size: 2em;
+  margin: 0px;
+  padding:0px;
+  width: 40px;
+  background-color: red;
+}
+button#close-page-button:hover{
+  background-color: #da4302;
+}
+
 @media all and (min-width: 480px) {
   
 }

@@ -38,7 +38,7 @@ export default class GroceriesListPage extends Component {
         return (
             <li className="grocery-item">
 
-                <img src={require('./../../img/' + this.props.groceryItem.image + '.png')} alt={this.props.groceryItem.name} />
+                <img src={'https://spoonacular.com/cdn/ingredients_100x100/' + this.props.groceryItem.image} alt={this.props.groceryItem.name} />
                 <div className="item-info">
                     <h3>{this.props.groceryItem.name}</h3>
                     <p>{this.props.groceryItem.quantity} {this.props.groceryItem.unit}</p>

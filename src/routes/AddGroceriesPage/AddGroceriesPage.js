@@ -17,7 +17,7 @@ export default class AddGroceries extends Component {
         filteredSuggestions: [],
         currentItem: [{ name: "" }],
         currentInput: "",
-        productUnit: [],
+        productUnit: "",
         error: null,
     };
     onKeyUp = e => {
@@ -55,7 +55,11 @@ export default class AddGroceries extends Component {
             currentInput: e.currentTarget.value
         });
     };
-
+    handleCancelButton = e => {
+        const { location, history } = this.props
+        const destination = (location.state || {}).from || '/groceries/all'
+        history.push(destination);
+    }
     handleSubmit = ev => {
         ev.preventDefault();
 
@@ -63,17 +67,18 @@ export default class AddGroceries extends Component {
         const destination = (location.state || {}).from || '/groceries/all'
 
 
-        const { name, category, storageLocation, reminder, quantity, unit, notes } = ev.target;
+        const { name, category, storageLocation, reminder, expiry_date, quantity, unit, notes } = ev.target;
         const newGroceryItem = {
             "name": name.value,
             "category": category.value,
             "location": storageLocation.value,
-            "expiry_reminder": reminder.value,
+            "expiry_reminder": reminder.checked,
+            "expiry_date": expiry_date.value,
             "quantity": quantity.value,
             "unit": unit.value,
             "notes": notes.value,
-            "price": 1.55,
-            "image": this.state.currentItem[0].name
+            "price": 1.00,
+            "image": this.state.currentItem[0].image
 
         }
         this.setState({ error: null })
@@ -103,11 +108,12 @@ export default class AddGroceries extends Component {
     }
     render() {
         const filteredSuggestions = this.state.filteredSuggestions;
-
+        const units = this.state.productUnit ? this.state.productUnit.map(unit => <option value={unit} key={unit}>{unit}</option>) : <option value="Piece">Piece</option>;
         const suggestions = filteredSuggestions.map(item => <li key={item.id} onClick={() => this.onClick(item.id)}>{item.name}</li>)
         return (
             <section className="add-grocery-items-section">
                 <form onSubmit={this.handleSubmit} method="post" id="add-groceries-form" autoComplete="off">
+                    <button id="close-page-button" onClick={this.handleCancelButton} title="Cancel">X</button>
                     <h2>Add Groceries</h2>
                     <fieldset>
                         <label htmlFor='name'>Name</label>
@@ -118,7 +124,7 @@ export default class AddGroceries extends Component {
                         <label htmlFor='category'>Category</label>
                         <select id="category" required name="category">
                             <option value={this.state.currentItem[0].aisle}>{this.state.currentItem[0].aisle}</option>
-                            <option value="Dry Goods">Dry Goods</option>
+                            {/* <option value="Dry Goods">Dry Goods</option>
                             <option value="Fruits">Fruits</option>
                             <option value="Vegetables">Vegetables</option>
                             <option value="Herbs and Spices">Herbs &amp; Spices</option>
@@ -127,7 +133,7 @@ export default class AddGroceries extends Component {
                             <option value="Frozen">Frozen</option>
                             <option value="Canned Foods">Canned Foods</option>
                             <option value="Bottles">Bottles</option>
-                            <option value="Jars">Jars</option>
+                            <option value="Jars">Jars</option> */}
                         </select>
                     </fieldset>
 
@@ -141,27 +147,19 @@ export default class AddGroceries extends Component {
                     </fieldset>
                     <fieldset>
                         <label htmlFor="reminder" id="reminder-label">Expiry date reminder </label>
-                        <input type="checkbox" id="reminder" />
+                        <input type="checkbox" id="reminder" name="reminder" />
                     </fieldset>
                     <fieldset>
                         <label htmlFor="expiry-date">Expiry date </label>
-                        <input type="date" id="expiry-date" name="expiration" />
+                        <input type="date" id="expiry_date" name="expiration" />
                     </fieldset>
                     <fieldset>
                         <label htmlFor="quantity"> Quantity </label><br />
                         <input type="number" id="quantity" defaultValue="1" max="100" min="1" name="quantity" />
 
                         <select id="unit" name="unit">
-                            <option value={this.state.productUnit[0]}>{this.state.productUnit[0]}</option>
-                            <option value="lbs">Pound(s)</option>
-                            <option value="kg">Kilogram(s)</option>
-                            <option value="Jar">Jar</option>
-                            <option value="can">Can</option>
-                            <option value="bottle">Bottle</option>
-                            <option value="gallon">Gallon(s)</option>
-                            <option value="pieces">Piece(s)</option>
-                            <option value="Bag">Bag(s)</option>
-                            <option value="container">Container(s)</option>
+                            {units}
+
                         </select>
                     </fieldset>
                     <fieldset>
