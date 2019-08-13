@@ -12,7 +12,7 @@ Landing Page:
 
 Recipe Search Page:
 
-![search](img/recipes_page.png)
+![search](src/img/recipes_page.png)
 
 Groceries Page:
 
