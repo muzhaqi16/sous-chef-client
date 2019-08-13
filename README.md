@@ -10,10 +10,6 @@ Landing Page:
 
 ![front page](src/img/landing_page.png)
 
-Recipe Search Page:
-
-![search](src/img/recipes_page.png)
-
 Groceries Page:
 
 ![groceries](src/img/groceries_page.png)
@@ -22,7 +18,11 @@ Add Grocery Item Page:
 
 ![add_groceries](src/img/add_groceries_page.png)
 
-Groceries Page:
+Recipe Search Page:
+
+![search](src/img/recipes_page.png)
+
+Shopping List Page:
 
 ![shopping_list](src/img/shopping_list.png)
 
