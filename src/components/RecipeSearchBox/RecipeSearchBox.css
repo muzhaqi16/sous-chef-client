@@ -31,6 +31,7 @@ input,button {
 .suggestion-active,
 .suggestions li:hover {
   cursor: pointer;
+  background-color: #00c6ff;
 }
 
 .suggestions li:not(:last-of-type) {
@@ -43,6 +44,22 @@ input,button {
     list-style: none;
     display: inline-block;
     padding: 5px;
+    background-color: #00c6ff;
+    border-radius: 20px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+.selected-ingredients li button{
+  width:auto;
+  height: auto;
+  margin: 0;
+  border: 0;
+  background-color: transparent;
+  cursor: pointer;
+  font-size: 0.8em;
+}
+.selected-ingredients li button:hover{
+color: red;
 }
 .search-area{
   display: flex;
@@ -59,6 +76,7 @@ input,button {
   width: 100%;
     background: #4CAF50;
     color: white;
+    cursor: pointer;
 }
 @media all and (min-width: 480px) {
   .search-area{

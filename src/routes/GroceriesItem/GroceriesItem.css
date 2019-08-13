@@ -18,6 +18,8 @@ img {
 
 .item-info h3 {
     margin: 0;
+    text-transform: capitalize;
+    
 }
 
 .item-info p {
@@ -32,7 +34,7 @@ img {
     bottom: 10px;
 }
 .expiration span{
-    color:blue;
+    color:white;
     display: block;
 }
 .delete {

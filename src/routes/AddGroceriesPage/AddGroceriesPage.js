@@ -23,8 +23,7 @@ export default class AddGroceries extends Component {
     onKeyUp = e => {
         const currentItem = e.currentTarget.value;
         const url = `https://api.spoonacular.com/food/ingredients/autocomplete?query=${currentItem}&number=5&metaInformation=true`;
-        const apiKey = '6c127984799b490cbd26a4a7014b83de ';
-        fetch(`${url}&apiKey=${apiKey}`)
+        fetch(`${url}&apiKey=${config.RECIPE_API_KEY}`)
             .then(response => response.json())
             .then(data => this.setState({
                 filteredSuggestions: data,
@@ -37,8 +36,7 @@ export default class AddGroceries extends Component {
     onClick = id => {
         const selectedItem = this.state.filteredSuggestions.filter(item => item.id === id);
         const url = `https://api.spoonacular.com/food/ingredients/${id}/information`
-        const apiKey = '6c127984799b490cbd26a4a7014b83de ';
-        fetch(`${url}?apiKey=${apiKey}`)
+        fetch(`${url}?apiKey=${config.RECIPE_API_KEY}`)
             .then(response => response.json())
             .then(data => this.setState({ productUnit: data.shoppingListUnits }))
             .catch(error => {

@@ -35,6 +35,9 @@ export default class Header extends Component {
                 <div className="menu">
                     <ul id="main-nav" className={this.state.hidden ? "hidden" : ""}>
                         <li><Link to="/" onClick={() => this.setState({ hidden: !this.state.hidden })}>Home</Link></li>
+                        <li><Link to="/groceries/all" onClick={() => this.setState({ hidden: !this.state.hidden })}>Groceries</Link></li>
+                        <li><Link to="/recipes" onClick={() => this.setState({ hidden: !this.state.hidden })}>Recipes</Link></li>
+                        <li><Link to="/shopping_list" onClick={() => this.setState({ hidden: !this.state.hidden })}>Shop List</Link></li>
                         <li>
                             {TokenService.hasAuthToken()
                                 ? this.renderLogoutLink()

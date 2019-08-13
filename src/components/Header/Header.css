@@ -10,7 +10,8 @@ nav {
 }
 #logo {
     float: left;
-    width: 15vh;
+    height: 3em;
+    width: auto;
     padding-bottom: 10px;
 }
 .menu{
@@ -22,7 +23,7 @@ nav {
     text-decoration: none;
     margin-right: 20px;
     color: white;
-    font-size: 1.2em;
+    font-size: 0.7em;
     font-weight: bold;
 }
 #main-nav{
@@ -38,8 +39,6 @@ nav {
     width: auto;
     
 }
-
-
 #main-nav a:hover {
     color: #f95738;
 }
@@ -48,6 +47,11 @@ nav {
 }
 
 @media all and (min-width: 480px) {
+    .menu a {
+        font-size: 0.9em;
+    }
+}
+@media all and (min-width: 720px) {
     #nav-toggle {
         display: none;
     }
@@ -56,6 +60,9 @@ nav {
     }
     nav{
         align-items: center;
+    }
+    .menu a {
+        font-size: 1.1em;
     }
     #main-nav li {
         display: inline-block;

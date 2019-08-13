@@ -1,7 +1,8 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
-import { faClock, faUtensils, faHeart } from "@fortawesome/free-solid-svg-icons";
+import { faClock, faUtensils, faHeart, faTimesCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import config from '../../config'
 import './RecipeSearchBox.css';
 
 export default class RecipeSearchBox extends Component {
@@ -26,7 +27,11 @@ export default class RecipeSearchBox extends Component {
         };
 
     }
-
+    removeIngredient = i => {
+        this.setState({
+            recipeItems: this.state.recipeItems.filter(item => item !== i)
+        })
+    }
     onChange = e => {
         const { suggestions } = this.props;
         const userInput = e.currentTarget.value;
@@ -50,7 +55,7 @@ export default class RecipeSearchBox extends Component {
             activeSuggestion: 0,
             filteredSuggestions: [],
             showSuggestions: false,
-            userInput: e.currentTarget.innerText,
+            userInput: "",
             recipeItems: [...this.state.recipeItems, e.currentTarget.innerText]
         });
     };
@@ -63,7 +68,7 @@ export default class RecipeSearchBox extends Component {
             this.setState({
                 activeSuggestion: 0,
                 showSuggestions: false,
-                userInput: filteredSuggestions[activeSuggestion],
+                userInput: "",
                 recipeItems: [...this.state.recipeItems, filteredSuggestions[activeSuggestion]]
             });
         }
@@ -85,10 +90,12 @@ export default class RecipeSearchBox extends Component {
         }
     };
     getRecipes = () => {
+        this.setState({
+            recipes: []
+        })
         const url = 'https://api.spoonacular.com/recipes/findByIngredients?ingredients=';
-        const apiKey = '6c127984799b490cbd26a4a7014b83de ';
         const ingredients = this.state.recipeItems.join();
-        fetch(`${url}${ingredients}&apiKey=${apiKey}`)
+        fetch(`${url}${ingredients}&apiKey=${config.RECIPE_API_KEY}`)
             .then(response => response.json())
             .then(data => this.handleRecipes(data))
             .catch(error => {
@@ -97,8 +104,7 @@ export default class RecipeSearchBox extends Component {
     }
     getRecipeInformation(id) {
         const url = `https://api.spoonacular.com/recipes/${id}/information`;
-        const apiKey = '6c127984799b490cbd26a4a7014b83de ';
-        return fetch(`${url}?apiKey=${apiKey}`)
+        return fetch(`${url}?apiKey=${config.RECIPE_API_KEY}`)
             .then(response => response.json())
             .then(data => this.handleInformation(data))
             .catch(error => {
@@ -123,10 +129,20 @@ export default class RecipeSearchBox extends Component {
             recipes.map((info, i) => {
                 const { id, image, likes, title, missedIngredients } = data[i];
                 const { cookingMinutes, preparationMinutes, readyInMinutes, servings, sourceUrl } = info;
-                const missingIngredientsString = missedIngredients.map(ingredient => ingredient.name + ', ');
+                const missingIngredientsString = missedIngredients.map((ingredient, i) => {
+                    if (ingredient) {
+                        if (i === 0)
+                            return ingredient.name
+                        return ', ' + ingredient.name
+                    }
+                    return ""
+                });
                 const newRecipe = { title, image, missingIngredientsString, id, likes, cookingMinutes, preparationMinutes, readyInMinutes, servings, sourceUrl };
 
-                this.setState({ recipes: [...this.state.recipes, newRecipe] });
+                this.setState({
+                    recipes: [...this.state.recipes, newRecipe],
+                    userInput: ""
+                });
                 return newRecipe;
             })
         }
@@ -144,7 +160,7 @@ export default class RecipeSearchBox extends Component {
             }
         } = this;
         const recipeList = recipeItems.map(item => {
-            return <li key={item}>{item}</li>
+            return <li key={item}>{item}<button onClick={() => this.removeIngredient(item)}><FontAwesomeIcon icon={faTimesCircle} /></button></li>
         })
         const recipesList = recipes.map(recipe => {
             return <li key={recipe.id}>

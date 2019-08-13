@@ -18,7 +18,7 @@
     width: 100%;
     list-style: none;
     display: block;
-    margin:1% auto;
+    margin:2% auto;
     background-color: white;
     overflow: hidden;
     max-width:300px;
@@ -43,7 +43,7 @@
     opacity: 0.85;
     width:100%;
     text-align: center;
-    height: 60px;
+    height: auto;
     vertical-align: middle;
 }
 .recipes-list .recipe-info{
