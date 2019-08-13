@@ -8,7 +8,7 @@ This is an app that tracks your grocery items, lets you create a shopping list a
 ## Screenshots
 Landing Page:
 
-![front page](img/landing_page.png)
+![front page](src/img/landing_page.png)
 
 Recipe Search Page:
 
@@ -16,15 +16,15 @@ Recipe Search Page:
 
 Groceries Page:
 
-![groceries](img/groceries_page.png)
+![groceries](src/img/groceries_page.png)
 
 Add Grocery Item Page:
 
-![add_groceries](img/add_groceries_page.png)
+![add_groceries](src/img/add_groceries_page.png)
 
 Groceries Page:
 
-![shopping_list](img/shopping_list.png)
+![shopping_list](src/img/shopping_list.png)
 
 ## Loging In
 
