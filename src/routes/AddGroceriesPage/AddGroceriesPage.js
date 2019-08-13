@@ -124,16 +124,6 @@ export default class AddGroceries extends Component {
                         <label htmlFor='category'>Category</label>
                         <select id="category" required name="category">
                             <option value={this.state.currentItem[0].aisle}>{this.state.currentItem[0].aisle}</option>
-                            {/* <option value="Dry Goods">Dry Goods</option>
-                            <option value="Fruits">Fruits</option>
-                            <option value="Vegetables">Vegetables</option>
-                            <option value="Herbs and Spices">Herbs &amp; Spices</option>
-                            <option value="Oils">Oils &amp; Spices</option>
-                            <option value="Dressings">Dressings</option>
-                            <option value="Frozen">Frozen</option>
-                            <option value="Canned Foods">Canned Foods</option>
-                            <option value="Bottles">Bottles</option>
-                            <option value="Jars">Jars</option> */}
                         </select>
                     </fieldset>
 

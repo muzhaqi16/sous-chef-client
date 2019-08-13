@@ -14,27 +14,95 @@
     text-align: left;
 }
 .recipes-list li{
+    background-color: transparent;
     width: 100%;
     list-style: none;
     display: block;
-    padding: 10px;
     margin:1% auto;
     background-color: white;
     overflow: hidden;
-   max-width: calc(400px + 1rem);
+    max-width:300px;
+    border-radius: 15px;
+    position: relative;
 }
 .recipes-list .header{
     display: flex;
+    flex-direction: column;
     align-items: flex-start;
+}
+.recipes-list .header img{
+    width: 100%;
+    padding: 0;
+    border-radius: 15px 15px 0 0;
 }
 .recipes-list li h1{
     font-size: 1em;
     padding: 0;
     margin:0;
+    background:#4ABFB4;
+    opacity: 0.85;
+    width:100%;
+    text-align: center;
+    height: 60px;
+    vertical-align: middle;
 }
+.recipes-list .recipe-info{
+    width: 100%;
+    padding: 5px;
+    font-size: 0.7em;
+    color: #777;
+    padding: 15px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 20px;
+}
+.recipe-info .likes{
+    color:#EC4678;
+}
+.recipe-info .likes:hover{
+    animation-name: pulse;
+    animation-duration: 0.5s;
+    animation-iteration-count: infinite;
+}
+a.view-recipe-button{
+        text-align: center;
+        width: 100%;
+        border-radius: 0 0 15px 15px;
+        text-transform: uppercase;
+        background: #00c6ff;  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #0072ff, #00c6ff);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #0072ff, #00c6ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        font-size: 1em;
+        bottom: 0;
+        height: 40px;
+        position: absolute;
+        cursor: pointer;
+        transition: 0.5s;
+}
+a.view-recipe-button:hover{
+    color: #EC4678;
+    font-size: 1.2em;
+}
+@keyframes pulse {
+    from {
+      transform: scale(1.0);
+      opacity: 1.0;
+    }
+    50% {
+      transform: scale(1.2);
+      opacity: 1.0;
+    }
+    to { 
+      transform: scale(1.0);
+      opacity: 1.0;
+    }
+  }
 .recipes-list li span{
-    display: block;
+    display: inline-block;
+    margin: 0 5px;
 }
 .recipes-list p {
     display: block;
+    text-align: center;
+    margin-bottom: 15%;
 }

@@ -1,5 +1,7 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
+import { faClock, faUtensils, faHeart } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import './RecipeSearchBox.css';
 
 export default class RecipeSearchBox extends Component {
@@ -105,11 +107,12 @@ export default class RecipeSearchBox extends Component {
     }
     handleInformation = (data) => {
         const cookingMinutes = data.cookingMinutes;
+        const sourceUrl = data.sourceUrl
         const preparationMinutes = data.preparationMinutes;
         const readyInMinutes = data.readyInMinutes;
         const servings = data.servings;
         const id = data.id;
-        const info = { cookingMinutes, preparationMinutes, readyInMinutes, servings, id };
+        const info = { cookingMinutes, preparationMinutes, readyInMinutes, servings, id, sourceUrl };
         return info;
     }
     handleRecipes = (data) => {
@@ -119,9 +122,9 @@ export default class RecipeSearchBox extends Component {
         Promise.all(fetchArray).then(recipes => {
             recipes.map((info, i) => {
                 const { id, image, likes, title, missedIngredients } = data[i];
-                const { cookingMinutes, preparationMinutes, readyInMinutes, servings } = info;
+                const { cookingMinutes, preparationMinutes, readyInMinutes, servings, sourceUrl } = info;
                 const missingIngredientsString = missedIngredients.map(ingredient => ingredient.name + ', ');
-                const newRecipe = { title, image, missingIngredientsString, id, likes, cookingMinutes, preparationMinutes, readyInMinutes, servings };
+                const newRecipe = { title, image, missingIngredientsString, id, likes, cookingMinutes, preparationMinutes, readyInMinutes, servings, sourceUrl };
 
                 this.setState({ recipes: [...this.state.recipes, newRecipe] });
                 return newRecipe;
@@ -149,12 +152,13 @@ export default class RecipeSearchBox extends Component {
                     <img src={recipe.image} alt={recipe.title} />
                     <h1>{recipe.title}</h1>
                 </div>
-                <span className="servings">Servings : {recipe.servings} </span>
-                <span className="likes">Likes : {recipe.likes} </span>
-                <span className="prep-time">Prep Time : {recipe.preparationMinutes} minutes </span>
-                <span className="cooking-time">Cooking Time : {recipe.cookingMinutes} minutes </span>
-                <span className="ready-in-time">Ready in {recipe.readyInMinutes} minutes </span>
+                <div className="recipe-info">
+                    <span className="servings"><FontAwesomeIcon icon={faUtensils} /> {recipe.servings} people</span>
+                    <span className="likes"><FontAwesomeIcon icon={faHeart} /> {recipe.likes} </span>
+                    <span className="ready-in-time"><FontAwesomeIcon icon={faClock} /> {recipe.readyInMinutes} minutes </span>
+                </div>
                 <p>Missing ingredients - {recipe.missingIngredientsString.length === 0 ? 'none' : recipe.missingIngredientsString}</p>
+                <a href={recipe.sourceUrl} target="_blank" rel="noopener noreferrer" className="view-recipe-button">View Recipe</a>
             </li>
         })
         let suggestionsListComponent;
