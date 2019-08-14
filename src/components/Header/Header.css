@@ -37,10 +37,13 @@ nav {
     border: 0;
     background-color: transparent;
     width: auto;
-    
+    color: white;
+}
+#nav-toggle:hover{
+    color:#f08a4b;
 }
 #main-nav a:hover {
-    color: #f95738;
+    color: #f08a4b;;
 }
 .hidden{
     display: none;
