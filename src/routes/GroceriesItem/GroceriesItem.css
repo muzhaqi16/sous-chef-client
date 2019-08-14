@@ -29,13 +29,15 @@ img {
 
 .expiration {
     font-size: 14px;
-    color: red;
     position: absolute;
     bottom: 10px;
 }
 .expiration span{
     color:white;
-    display: block;
+    display: inline-block;
+}
+.expiration span.expired{
+    color: red;
 }
 .delete {
     color: red;

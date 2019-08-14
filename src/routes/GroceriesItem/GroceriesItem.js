@@ -30,10 +30,15 @@ export default class GroceriesListPage extends Component {
             })
     }
     render() {
-
-        let current_datetime = new Date(this.props.groceryItem.expiry_date)
-        const months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
-        let formatted_date = months[current_datetime.getMonth()] + "-" + (current_datetime.getDate() + 1) + "-" + current_datetime.getFullYear();
+        const current_datetime = new Date();
+        const expiration_datetime = new Date(this.props.groceryItem.expiry_date)
+        let days = expiration_datetime.getDate() - current_datetime.getDate();
+        const months = expiration_datetime.getMonth() - current_datetime.getMonth();
+        if (months > 0) {
+            days += months * 30
+        }
+        let formatted_text = days >= 0 ? "Expires in " : "Expired ";
+        const formatted_date = (days >= 0 ? (days === 0 ? " today" : days + " days") : Math.abs(days) + " days ago ")
 
         return (
             <li className="grocery-item">
@@ -44,7 +49,7 @@ export default class GroceriesListPage extends Component {
                     <p>{this.props.groceryItem.quantity} {this.props.groceryItem.unit}</p>
                 </div>
 
-                <label className="expiration">Expires in <span>{formatted_date}</span></label>
+                <label className="expiration">{formatted_text} <span className={days >= 0 ? "" : "expired"}>{formatted_date}</span></label>
 
                 <FontAwesomeIcon className="delete" icon={faMinus} onClick={this.handleDelete} title="Delete this item from your list" />
                 <label className="add" title="Add to shopping list" onClick={() => this.props.addToList(this.props.groceryItem.name)} ><FontAwesomeIcon icon={faPlus} /> Add to List</label>
