@@ -8,23 +8,23 @@ This is an app that tracks your grocery items, lets you create a shopping list a
 ## Screenshots
 Landing Page:
 
-![front page](img/landing_page.png)
-
-Recipe Search Page:
-
-![search](img/recipes_page.png)
+![front page](src/img/landing_page.png)
 
 Groceries Page:
 
-![groceries](img/groceries_page.png)
+![groceries](src/img/groceries_page.png)
 
 Add Grocery Item Page:
 
-![add_groceries](img/add_groceries_page.png)
+![add_groceries](src/img/add_groceries_page.png)
 
-Groceries Page:
+Recipe Search Page:
 
-![shopping_list](img/shopping_list.png)
+![search](src/img/recipes_page.png)
+
+Shopping List Page:
+
+![shopping_list](src/img/shopping_list.png)
 
 ## Loging In
 
